@@ -6,25 +6,43 @@
 //
 
 import Foundation
+import FirebaseFirestore
 import Firebase
 
 class FirestoreService {
     
     // MARK: - Create
-    static func createItem(item: CollectionItem) {
+    func createReference(path: String) -> DocumentReference {
         let db = Firestore.firestore()
-        let data = item.data
-        let path = item.path
-        var ref: DocumentReference? = nil
-        ref = db.collection(path).addDocument(data: data) { err in
-            if let err = err {
-                print("Error adding document: \(err)")
+        return db.document(path)
+    }
+    
+    func createItem(item: CollectionItem, merge: Bool, onComplete: @escaping (Error?) -> Void) {
+        let db = Firestore.firestore()
+        let reference = db.document(item.path)
+        reference.setData(item.data) { error in
+            if let error = error {
+                onComplete(error)
             } else {
-                print("Document added with ID: \(ref!.documentID)")
+                onComplete(nil)
             }
         }
     }
     
     // MARK: - Read
-    // TODO
+    
+    func observeDocument(path: String, transform: @escaping (FirestoreDocument) -> CollectionItem) {
+        let db = Firestore.firestore()
+        db.document(path)
+            .addSnapshotListener { snapshot, error in
+                guard let document = snapshot else {
+                    print("Error fetching document: \(error!)")
+                    return
+                }
+                let source = document.metadata.hasPendingWrites ? "Local" : "Server"
+                let fireStoreDocument = FirestoreDocument(path: path, data: document.data()!)
+                _  = transform(fireStoreDocument)
+                print("\(source) data: \(document.data() ?? [:])")
+            }
+    }
 }

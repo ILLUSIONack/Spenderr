@@ -6,17 +6,29 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 class User: CollectionItem {
     var path: String
+    var id: String
     var data: Dictionary<String, Any>
-    var first: String
-    var last: String
+    var displayName: String?
+    var email: String?
+    var reference: DocumentReference
     
-    init(first: String, last:String) {
-        self.first = first
-        self.last = last
-        self.data = ["first": first, "last": last]
-        self.path = "users"
+    init(displayName: String, email:String, path: String) {
+        self.path = "users/" + path
+        self.id = path
+        self.reference = ServiceProvider.shared.firestoreService.createReference(path: "users/" + path)
+        self.data = ["displayName": displayName, "email": email, "reference": self.reference]
+        self.displayName = displayName
+        self.email = email
+    }
+    
+    init(document: FirestoreDocument) {
+        self.path = document.path
+        self.data = document.data
+        self.id = document.path
+        self.reference = ServiceProvider.shared.firestoreService.createReference(path: path)
     }
 }

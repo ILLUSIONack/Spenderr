@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ry1-oQ-Vf0">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Onboarding View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="OnboardingViewController" customModule="Spenderr" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="wCn-uZ-8uC">
+                                <rect key="frame" x="8" y="775" width="398" height="79"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ido-ID-zSr">
+                                        <rect key="frame" x="0.0" y="0.0" width="398" height="30"/>
+                                        <state key="normal" title="Signup"/>
+                                        <connections>
+                                            <action selector="signUpButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="llI-9w-3dx"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="seD-tI-Caa">
+                                        <rect key="frame" x="0.0" y="49" width="398" height="30"/>
+                                        <state key="normal" title="Login"/>
+                                        <connections>
+                                            <action selector="loginButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="WvT-Ie-AVw"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemGray2Color"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="wCn-uZ-8uC" secondAttribute="bottom" constant="8" id="4NN-pe-kHD"/>
+                            <constraint firstItem="wCn-uZ-8uC" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="8" id="7JK-va-MHo"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="wCn-uZ-8uC" secondAttribute="trailing" constant="8" id="Dkf-hH-zdG"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="rAg-A4-g66"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="881.15942028985512" y="83.035714285714278"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ks5-eZ-MEj">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ry1-oQ-Vf0" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JVe-pd-Tsf">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="6Ot-JA-Hm1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Dl-UV-2VZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-100" y="83"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
