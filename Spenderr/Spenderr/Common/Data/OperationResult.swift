@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum OperationResult<Value> {
-    case success(Value)
+enum OperationResult<T> {
+    case success(T)
     case failure(Error)
 }

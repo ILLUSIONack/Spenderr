@@ -40,9 +40,32 @@ class FirestoreService {
                     return
                 }
                 let source = document.metadata.hasPendingWrites ? "Local" : "Server"
-                let fireStoreDocument = FirestoreDocument(path: path, data: document.data()!)
-                _  = transform(fireStoreDocument)
+                if let data = document.data() {
+                    let fireStoreDocument = FirestoreDocument(path: path, data: data)
+                    _  = transform(fireStoreDocument)
+                }
+              
                 print("\(source) data: \(document.data() ?? [:])")
             }
+    }
+    
+    func getDocument(path: String, transform: @escaping (FirestoreDocument) -> CollectionItem, onComplete: @escaping (Result<CollectionItem, Error>) -> Void) {
+        let db = Firestore.firestore()
+        onComplete(Result.loading(nil, nil))
+        db.document(path).getDocument { (document, error) in
+            if let error = error {
+                _ = onComplete(Result.error(error, nil))
+            }
+            
+            if let document = document {
+              if document.exists, let data = document.data() {
+                let firestoreDocument = FirestoreDocument(path: path, data: data)
+                let success: Result<CollectionItem, Error> = Result.success( transform(firestoreDocument), nil)
+                  _ = onComplete(success)
+              } else {
+                onComplete(Result.notFound(nil, nil))
+              }
+            }
+        }
     }
 }

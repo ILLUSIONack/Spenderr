@@ -26,26 +26,34 @@ class FirebaseService {
             if let error = error {
                 _ = onResult(OperationResult.failure(error))
             } else if let result = result {
-                _ = onResult(OperationResult<String>.success(result.user.uid))
+                _ = onResult(OperationResult.success(result.user.uid))
             }
         }
     }
     
-    func signIn(email: String, password: String, onResult: @escaping (String) -> Void) {
+    func signIn(email: String, password: String, onResult: @escaping (OperationResult<String>) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
             if let error = error {
-                onResult(error.localizedDescription)
+                onResult(OperationResult.failure(error) )
             } else if let result = result {
-                onResult(result.user.uid)
+                onResult(OperationResult.success(result.user.uid))
             }
         }
     }
     
-    func signOut(onComplete: @escaping (Error?) -> Void) {
+    func signOut(onComplete: @escaping (OperationResult<String>) -> Void) {
         do {
             try Auth.auth().signOut()
-            _ = onComplete(nil)
+            _ = onComplete(OperationResult.success("Logged out"))
         } catch let error {
+            _ = onComplete(OperationResult.failure(error))
+        }
+    }
+    
+    func updateDisplayName(name: String, onComplete: @escaping (Error?) -> Void) {
+        let request = Auth.auth().currentUser!.createProfileChangeRequest()
+        request.displayName = name
+        request.commitChanges { error in
             _ = onComplete(error)
         }
     }

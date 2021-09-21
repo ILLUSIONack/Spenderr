@@ -8,33 +8,62 @@
 import UIKit
 import Firebase
 
-class ViewController: UIViewController {
-    
-    let firebaseService = ServiceProvider.shared.firebaseService
-    let firestoreService = ServiceProvider.shared.firestoreService
-    let userRepository = UserRepository()
+protocol ViewControllerDelegate {
+    func loadData()
+}
 
+class ViewController: UIViewController, ViewControllerDelegate {
+    let userRepository = ServiceProvider.shared.userRepository
     
+    @IBOutlet weak var titleTextField: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        firebaseService.currentUserID != nil ? print("HERE") : navigateToAuthentication()
-        print(userRepository.currentUser)
-        print(userRepository.currentUserId)
     }
-
-    private func navigateToAuthentication() {
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        loadData()
+    }
+    
+    func loadData() {
+        print("Loaddata is called")
         DispatchQueue.main.async {
-            let nvc = UIStoryboard(name: "Onboarding", bundle: nil).instantiateInitialViewController() as! UINavigationController
-            nvc.modalPresentationStyle = .fullScreen
-            self.present(nvc, animated: true)
+            if let currentUser = self.userRepository.currentUser {
+                self.titleTextField.text = "Hey " + (currentUser.data["displayName"] as! String) + "!"
+            } else {
+                self.navigateToAuthentication()
+            }
         }
     }
+    
+    private func navigateToAuthentication() {
+        let nvc = UIStoryboard(name: "Onboarding", bundle: nil).instantiateInitialViewController() as! UINavigationController
+        nvc.modalPresentationStyle = .fullScreen
+        self.present(nvc, animated: true)
+    }
+    
+    private func navigateToSettings() {
+        let nvc = UIStoryboard(name: "Settings", bundle: nil).instantiateInitialViewController() as! UINavigationController
+        let vc = nvc.viewControllers[0] as! SettingsViewController
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+   
+    
     @IBAction func settingsButtonPressed(_ sender: Any) {
-        firebaseService.signOut { error in
-            error == nil ? self.navigateToAuthentication() : nil
-        }
+        navigateToSettings()
     }
     
+    @IBAction func reloadButton(_ sender: Any) {
+        
+    }
     
+    private func showAlertDialog(title: String, message: String, alertActions: [UIAlertAction]) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertActions.forEach { (alertAction) in
+            alert.addAction(alertAction)
+        }
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 

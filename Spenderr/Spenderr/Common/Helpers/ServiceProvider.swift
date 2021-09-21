@@ -21,4 +21,5 @@ class ServiceProvider {
     
     lazy var firestoreService = FirestoreService()
     lazy var firebaseService = FirebaseService()
+    lazy var userRepository = UserRepository()
 }

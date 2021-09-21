@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -60,13 +60,26 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zDe-TG-4fw">
+                                <rect key="frame" x="8" y="44" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="LcN-Rs-WKY"/>
+                                    <constraint firstAttribute="width" secondItem="zDe-TG-4fw" secondAttribute="height" multiplier="1:1" id="asV-XX-AhS"/>
+                                </constraints>
+                                <state key="normal" image="ic_back_arrow"/>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="MhO-JE-Om5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                         <constraints>
+                            <constraint firstItem="zDe-TG-4fw" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="31D-Mo-Tk1"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="CA3-Qc-l6h" secondAttribute="trailing" constant="8" id="5cI-CY-Eaw"/>
                             <constraint firstItem="CA3-Qc-l6h" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="8" id="Fji-5t-4nD"/>
                             <constraint firstItem="CA3-Qc-l6h" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="Yc2-lD-UCX"/>
+                            <constraint firstItem="zDe-TG-4fw" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="8" id="mAX-C6-jAv"/>
                         </constraints>
                     </view>
                     <connections>
@@ -77,10 +90,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-629" y="89"/>
+            <point key="canvasLocation" x="-1310" y="88"/>
         </scene>
     </scenes>
     <resources>
+        <image name="ic_back_arrow" width="54" height="54"/>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
