@@ -7,6 +7,7 @@
 
 import Foundation
 import Firebase
+let userDefaults = UserDefaults.standard
 
 class ServiceProvider {
     static let shared = ServiceProvider()
@@ -16,10 +17,18 @@ class ServiceProvider {
         if !didInitializeDataSync {
             didInitializeDataSync = true
             FirebaseApp.configure()
+            
+            if true {
+                Firestore.firestore().clearPersistence { error in
+                    guard let _ = error else {
+//                        userDefaults.set(ServiceProvider.shared.userRepository.currentUserId, forKey: "UID")
+                        return
+                    }
+                }
+            }
         }
     }
     
     lazy var firestoreService = FirestoreService()
-    lazy var firebaseService = FirebaseService()
-    lazy var userRepository = UserRepository()
+    lazy var userRepository = UserRepository(firebaseService: FirebaseService())
 }

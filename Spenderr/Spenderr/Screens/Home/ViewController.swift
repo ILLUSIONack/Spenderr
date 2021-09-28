@@ -8,31 +8,35 @@
 import UIKit
 import Firebase
 
-protocol ViewControllerDelegate {
-    func loadData()
-}
-
-class ViewController: UIViewController, ViewControllerDelegate {
+class ViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
+    
     let userRepository = ServiceProvider.shared.userRepository
+    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var noSpendingLabel: UILabel!
+    let myarray = ["item", "item21"]
     
     @IBOutlet weak var titleTextField: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadData()
+        noSpendingLabel.isHidden = true
+        tableView.isHidden = false
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         loadData()
     }
     
     func loadData() {
-        print("Loaddata is called")
         DispatchQueue.main.async {
-            if let currentUser = self.userRepository.currentUser {
-                self.titleTextField.text = "Hey " + (currentUser.data["displayName"] as! String) + "!"
-            } else {
-                self.navigateToAuthentication()
+            guard let name = UserDefaults.standard.object(forKey: "name") as? String else {
+                return self.navigateToAuthentication()
             }
+            self.titleTextField.text = name
         }
     }
     
@@ -44,8 +48,8 @@ class ViewController: UIViewController, ViewControllerDelegate {
     
     private func navigateToSettings() {
         let nvc = UIStoryboard(name: "Settings", bundle: nil).instantiateInitialViewController() as! UINavigationController
-        let vc = nvc.viewControllers[0] as! SettingsViewController
-        navigationController?.pushViewController(vc, animated: true)
+        nvc.modalPresentationStyle = .fullScreen
+        present(nvc, animated: true)
     }
     
    
@@ -54,8 +58,17 @@ class ViewController: UIViewController, ViewControllerDelegate {
         navigateToSettings()
     }
     
-    @IBAction func reloadButton(_ sender: Any) {
-        
+    @IBAction func addButton(_ sender: Any) {
+        let nvc = UIStoryboard(name: "AddSpending", bundle: nil).instantiateInitialViewController() as! UINavigationController
+        if #available(iOS 13.0, *) {
+            nvc.modalPresentationStyle = .automatic
+            nvc.presentationController?.delegate = self
+        } else {
+            nvc.modalPresentationStyle = .fullScreen
+            nvc.view.backgroundColor = UIColor.clear
+            nvc.view.isOpaque = false
+        }
+        present(nvc, animated: true)
     }
     
     private func showAlertDialog(title: String, message: String, alertActions: [UIAlertAction]) {
@@ -65,5 +78,26 @@ class ViewController: UIViewController, ViewControllerDelegate {
         }
         self.present(alert, animated: true, completion: nil)
     }
+    
+//    private func updateUI() {
+//        noSpendingLabel.isHidden = !noSpendingLabel.isHidden
+//        tableView.isHidden = !tableView.isHidden
+//    }
 }
 
+extension ViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if myarray.count <= 0 {
+            noSpendingLabel.isHidden = false
+            tableView.isHidden = true
+        }
+        return myarray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as UITableViewCell
+        cell.textLabel?.text = myarray[indexPath.item]
+        return cell
+    }
+    
+}

@@ -36,6 +36,7 @@ class FirebaseService {
             if let error = error {
                 onResult(OperationResult.failure(error) )
             } else if let result = result {
+                UserDefaults.standard.setValue(result.user.displayName, forKey: "name")
                 onResult(OperationResult.success(result.user.uid))
             }
         }
@@ -44,6 +45,7 @@ class FirebaseService {
     func signOut(onComplete: @escaping (OperationResult<String>) -> Void) {
         do {
             try Auth.auth().signOut()
+            UserDefaults.standard.removeObject(forKey: "name")
             _ = onComplete(OperationResult.success("Logged out"))
         } catch let error {
             _ = onComplete(OperationResult.failure(error))

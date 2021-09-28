@@ -8,7 +8,7 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-    private let userRepository = UserRepository()
+    private let userRepository = ServiceProvider.shared.userRepository
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     

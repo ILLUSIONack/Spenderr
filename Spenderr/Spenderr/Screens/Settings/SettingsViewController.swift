@@ -13,13 +13,16 @@ class SettingsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = false
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.isNavigationBarHidden = true
-
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = false
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -30,24 +33,26 @@ class SettingsViewController: UITableViewController {
         default: break
         }
     }
+    
+    @IBAction func dismissButtonPressed(_ sender: Any) {
+        presentingViewController?.dismiss(animated: true, completion: nil)
+    }
 
+    
     private func signOutButtonClicked() {
         userRepository.signOut { result in
             switch result {
             case .success(_): self.showAlertDialog(title: "Signout", message: "This will log you out of your account", alertActions:
-                                                [
-                                                UIAlertAction(title: "Cancel", style: .cancel),
-                                                UIAlertAction(title: "Signout", style: .destructive, handler: { _ in self.navigateToAuthentication() })
-                                                ])
+                                                    [
+                                                        UIAlertAction(title: "Cancel", style: .cancel),
+                                                        UIAlertAction(title: "Signout", style: .default, handler: { _ in
+                                                            self.presentingViewController?.dismiss(animated: true, completion: nil)
+                                                        })
+                                                    ])
+
             case .failure(let error): print(error.localizedDescription)
             }
         }
-    }
-    
-    private func navigateToAuthentication() {
-        let nvc = UIStoryboard(name: "Onboarding", bundle: nil).instantiateInitialViewController() as! UINavigationController
-        nvc.modalPresentationStyle = .fullScreen
-        self.present(nvc, animated: true)
     }
     
     private func showAlertDialog(title: String, message: String, alertActions: [UIAlertAction]) {

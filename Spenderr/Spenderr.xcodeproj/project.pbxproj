@@ -36,6 +36,8 @@
 		40EE7973264A0D67008F79D3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EE7972264A0D67008F79D3 /* User.swift */; };
 		40EE7975264A0FDA008F79D3 /* CollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EE7974264A0FDA008F79D3 /* CollectionItem.swift */; };
 		B2935091C2197A9F7A1B6ADD /* Pods_SpenderrTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF37EEBFB130E50DC54ED67C /* Pods_SpenderrTests.framework */; };
+		C5AE2A582703CE3200A2923C /* AddSpendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AE2A572703CE3200A2923C /* AddSpendingViewController.swift */; };
+		C5AE2A5A2703CE3E00A2923C /* AddSpending.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5AE2A592703CE3E00A2923C /* AddSpending.storyboard */; };
 		F2859BB43F393AF7B05F7848 /* Pods_Spenderr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B2E8B0D43713E1ABDFA9EC /* Pods_Spenderr.framework */; };
 		FA1407716DBC52B2EBF085BA /* Pods_Spenderr_SpenderrUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1592033ED77C10A666E6F6D3 /* Pods_Spenderr_SpenderrUITests.framework */; };
 /* End PBXBuildFile section */
@@ -101,6 +103,8 @@
 		A82D7DC75158130E0412D580 /* Pods-Spenderr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spenderr.debug.xcconfig"; path = "Target Support Files/Pods-Spenderr/Pods-Spenderr.debug.xcconfig"; sourceTree = "<group>"; };
 		AF37EEBFB130E50DC54ED67C /* Pods_SpenderrTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpenderrTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C07B1376A9CCCADAE57F787E /* Pods-Spenderr-SpenderrUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spenderr-SpenderrUITests.debug.xcconfig"; path = "Target Support Files/Pods-Spenderr-SpenderrUITests/Pods-Spenderr-SpenderrUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C5AE2A572703CE3200A2923C /* AddSpendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSpendingViewController.swift; sourceTree = "<group>"; };
+		C5AE2A592703CE3E00A2923C /* AddSpending.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddSpending.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,6 +281,7 @@
 		40EE7961264A0203008F79D3 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				C5AE2A562703CDFE00A2923C /* AddSpending */,
 				408C8DB9264CCD1A00B21816 /* CreateAccount */,
 				40EE7962264A0203008F79D3 /* Home */,
 				408C8DBE264CCD4600B21816 /* Login */,
@@ -330,6 +335,15 @@
 				40EE7972264A0D67008F79D3 /* User.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		C5AE2A562703CDFE00A2923C /* AddSpending */ = {
+			isa = PBXGroup;
+			children = (
+				C5AE2A592703CE3E00A2923C /* AddSpending.storyboard */,
+				C5AE2A572703CE3200A2923C /* AddSpendingViewController.swift */,
+			);
+			path = AddSpending;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -445,6 +459,7 @@
 				408C8DC0264CCD5100B21816 /* Login.storyboard in Resources */,
 				408C8DCF264E5A9C00B21816 /* Settings.storyboard in Resources */,
 				408C8DBB264CCD2700B21816 /* CreateAccount.storyboard in Resources */,
+				C5AE2A5A2703CE3E00A2923C /* AddSpending.storyboard in Resources */,
 				408C8DC5264CCE2100B21816 /* Onboarding.storyboard in Resources */,
 				40EE795D2649FEF1008F79D3 /* GoogleService-Info.plist in Resources */,
 				40EE796A264A020B008F79D3 /* Assets.xcassets in Resources */,
@@ -593,6 +608,7 @@
 				408C8DD1264E5AA600B21816 /* SettingsViewController.swift in Sources */,
 				40EE7966264A0203008F79D3 /* ViewController.swift in Sources */,
 				40EE792F2649FC53008F79D3 /* SceneDelegate.swift in Sources */,
+				C5AE2A582703CE3200A2923C /* AddSpendingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -698,7 +714,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -753,7 +769,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

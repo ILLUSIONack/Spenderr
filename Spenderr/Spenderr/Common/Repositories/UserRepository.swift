@@ -9,22 +9,27 @@ import Foundation
 import Firebase
 
 class UserRepository {
-    let firebaseService = ServiceProvider.shared.firebaseService
+    var firebaseService: FirebaseService
+    
     let firestoreService = ServiceProvider.shared.firestoreService
-    var currentUserId = {
-        return ServiceProvider.shared.firebaseService.currentUserID
+    
+    lazy var currentUserId = {
+        return self.firebaseService.currentUserID
     }()
-    var currentUserDisplayName = {
-        return ServiceProvider.shared.firebaseService.currentUserDisplayName
+    
+    lazy var currentUserDisplayName = {
+        return self.firebaseService.currentUserDisplayName
     }()
     var currentUser: User?
     
-    init() {
-        fetchUser()
-        startObservingUser()
+    
+    init(firebaseService: FirebaseService) {
+        self.firebaseService = firebaseService
+
+        self.startObservingUser()
     }
     
-    private func startObservingUser() {
+    func startObservingUser() {
         Auth.auth().addStateDidChangeListener { (auth, user) in
             if let user = user {
                 self.firestoreService.observeDocument(path: "users/" + user.uid) { firestoreDocument in
@@ -32,16 +37,6 @@ class UserRepository {
                     self.currentUser = userModel
                     return userModel
                 }
-            }
-        }
-    }
-    
-    private func fetchUser() {
-        if let currentUserId = currentUserId {
-            firestoreService.observeDocument(path: "users/" + currentUserId) { FirestoreDocument in
-                let user = User(document: FirestoreDocument)
-                self.currentUser = user
-                return user
             }
         }
     }
@@ -72,6 +67,7 @@ class UserRepository {
         firebaseService.signIn(email: email, password: password) { result in
             switch result {
             case .success(let data):
+                print(data)
                 onComplete(OperationResult.success(data))
             case .failure(let error): onComplete(OperationResult.failure(error))
             }
