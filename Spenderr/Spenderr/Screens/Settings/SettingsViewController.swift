@@ -37,22 +37,22 @@ class SettingsViewController: UITableViewController {
     @IBAction func dismissButtonPressed(_ sender: Any) {
         presentingViewController?.dismiss(animated: true, completion: nil)
     }
-
+    
     
     private func signOutButtonClicked() {
-        userRepository.signOut { result in
-            switch result {
-            case .success(_): self.showAlertDialog(title: "Signout", message: "This will log you out of your account", alertActions:
-                                                    [
-                                                        UIAlertAction(title: "Cancel", style: .cancel),
-                                                        UIAlertAction(title: "Signout", style: .default, handler: { _ in
-                                                            self.presentingViewController?.dismiss(animated: true, completion: nil)
-                                                        })
-                                                    ])
-
-            case .failure(let error): print(error.localizedDescription)
-            }
-        }
+        self.showAlertDialog(title: "Signout", message: "This will log you out of your account", alertActions:
+                                [
+                                    UIAlertAction(title: "Cancel", style: .cancel),
+                                    UIAlertAction(title: "Signout", style: .default, handler: { _ in
+                                        self.userRepository.signOut { result in
+                                            switch result {
+                                            case .success(_): self.presentingViewController?.dismiss(animated: true, completion: nil)
+                                            case .failure(let error): print(error.localizedDescription)
+                                            }
+                                        }
+                                    })
+                                ])
+        
     }
     
     private func showAlertDialog(title: String, message: String, alertActions: [UIAlertAction]) {
