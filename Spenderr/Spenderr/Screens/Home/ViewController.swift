@@ -25,7 +25,6 @@ class ViewController: UIViewController, UIAdaptivePresentationControllerDelegate
         loadData()
         setupUI()
         
-        expenseRepository.startObservingExpenses(userPath: <#T##String#>, onComplete: <#T##(OperationResult<Bool>) -> Void#>)
     }
     
     override func viewWillAppear(_ animated: Bool) {
