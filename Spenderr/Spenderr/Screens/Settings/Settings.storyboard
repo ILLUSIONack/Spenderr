@@ -68,7 +68,8 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" id="A6T-nc-u6h">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="rT5-iC-3a3">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="ic_back" id="rT5-iC-3a3">
+                            <color key="tintColor" systemColor="labelColor"/>
                             <connections>
                                 <action selector="dismissButtonPressed:" destination="Z0i-xS-OOO" id="XtX-tg-SSX"/>
                             </connections>
@@ -99,6 +100,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ic_back" width="24" height="24"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

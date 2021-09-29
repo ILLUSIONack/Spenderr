@@ -11,19 +11,21 @@ import Firebase
 class ViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
     
     let userRepository = ServiceProvider.shared.userRepository
+    let expenseRepository = ServiceProvider.shared.expenseRepository
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var budgetView: UIView!
     @IBOutlet weak var noSpendingLabel: UILabel!
     let myarray = ["item", "item21"]
+    
     
     @IBOutlet weak var titleTextField: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
-        noSpendingLabel.isHidden = true
-        tableView.isHidden = false
-        tableView.delegate = self
-        tableView.dataSource = self
+        setupUI()
+        
+        expenseRepository.startObservingExpenses(userPath: <#T##String#>, onComplete: <#T##(OperationResult<Bool>) -> Void#>)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,6 +40,15 @@ class ViewController: UIViewController, UIAdaptivePresentationControllerDelegate
             }
             self.titleTextField.text = name
         }
+    }
+    
+    private func setupUI() {
+        budgetView.layer.masksToBounds = true
+        budgetView.layer.cornerRadius = 9
+        noSpendingLabel.isHidden = true
+        tableView.isHidden = false
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     private func navigateToAuthentication() {
@@ -78,11 +89,6 @@ class ViewController: UIViewController, UIAdaptivePresentationControllerDelegate
         }
         self.present(alert, animated: true, completion: nil)
     }
-    
-//    private func updateUI() {
-//        noSpendingLabel.isHidden = !noSpendingLabel.isHidden
-//        tableView.isHidden = !tableView.isHidden
-//    }
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
@@ -90,13 +96,14 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         if myarray.count <= 0 {
             noSpendingLabel.isHidden = false
             tableView.isHidden = true
+            tableView.reloadData()
         }
         return myarray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as UITableViewCell
-        cell.textLabel?.text = myarray[indexPath.item]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ExpenseCell", for: indexPath) as! ExpenseCell
+        cell.nameLabel.text = myarray[indexPath.item]
         return cell
     }
     

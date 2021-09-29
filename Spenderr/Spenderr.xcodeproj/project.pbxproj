@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4080F1792705139C00B69983 /* ExpenseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4080F1782705139C00B69983 /* ExpenseCell.swift */; };
+		4080F181270518A300B69983 /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4080F180270518A300B69983 /* Expense.swift */; };
+		4080F186270519B900B69983 /* ExpenseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4080F185270519B900B69983 /* ExpenseRepository.swift */; };
 		408C8DBB264CCD2700B21816 /* CreateAccount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 408C8DBA264CCD2700B21816 /* CreateAccount.storyboard */; };
 		408C8DBD264CCD3600B21816 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408C8DBC264CCD3600B21816 /* CreateAccountViewController.swift */; };
 		408C8DC0264CCD5100B21816 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 408C8DBF264CCD5100B21816 /* Login.storyboard */; };
@@ -62,6 +65,9 @@
 /* Begin PBXFileReference section */
 		11B2E8B0D43713E1ABDFA9EC /* Pods_Spenderr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spenderr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1592033ED77C10A666E6F6D3 /* Pods_Spenderr_SpenderrUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spenderr_SpenderrUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4080F1782705139C00B69983 /* ExpenseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCell.swift; sourceTree = "<group>"; };
+		4080F180270518A300B69983 /* Expense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expense.swift; sourceTree = "<group>"; };
+		4080F185270519B900B69983 /* ExpenseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseRepository.swift; sourceTree = "<group>"; };
 		408C8DBA264CCD2700B21816 /* CreateAccount.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateAccount.storyboard; sourceTree = "<group>"; };
 		408C8DBC264CCD3600B21816 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		408C8DBF264CCD5100B21816 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -158,6 +164,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		4080F1772705137600B69983 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4080F1782705139C00B69983 /* ExpenseCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		408C8DB9264CCD1A00B21816 /* CreateAccount */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				408C8DD5264E8E1900B21816 /* UserRepository.swift */,
+				4080F185270519B900B69983 /* ExpenseRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -294,6 +309,7 @@
 		40EE7962264A0203008F79D3 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				4080F1772705137600B69983 /* Cells */,
 				40EE7964264A0203008F79D3 /* Main.storyboard */,
 				40EE7963264A0203008F79D3 /* ViewController.swift */,
 			);
@@ -333,6 +349,7 @@
 			isa = PBXGroup;
 			children = (
 				40EE7972264A0D67008F79D3 /* User.swift */,
+				4080F180270518A300B69983 /* Expense.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -590,6 +607,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4080F181270518A300B69983 /* Expense.swift in Sources */,
 				408C8DDD26501E2A00B21816 /* Result.swift in Sources */,
 				408C8DD9264F438A00B21816 /* OperationResult.swift in Sources */,
 				408C8DC2264CCD5B00B21816 /* LoginViewController.swift in Sources */,
@@ -602,10 +620,12 @@
 				40EE792D2649FC53008F79D3 /* AppDelegate.swift in Sources */,
 				408C8DCC264E4AA800B21816 /* ServiceProvider.swift in Sources */,
 				408C8DD6264E8E1900B21816 /* UserRepository.swift in Sources */,
+				4080F1792705139C00B69983 /* ExpenseCell.swift in Sources */,
 				408C8DBD264CCD3600B21816 /* CreateAccountViewController.swift in Sources */,
 				40EE796E264A07F9008F79D3 /* FirestoreService.swift in Sources */,
 				408C8DC7264CCE2B00B21816 /* OnboardingViewController.swift in Sources */,
 				408C8DD1264E5AA600B21816 /* SettingsViewController.swift in Sources */,
+				4080F186270519B900B69983 /* ExpenseRepository.swift in Sources */,
 				40EE7966264A0203008F79D3 /* ViewController.swift in Sources */,
 				40EE792F2649FC53008F79D3 /* SceneDelegate.swift in Sources */,
 				C5AE2A582703CE3200A2923C /* AddSpendingViewController.swift in Sources */,
@@ -714,7 +734,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -769,7 +789,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
