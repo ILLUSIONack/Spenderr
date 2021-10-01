@@ -8,7 +8,8 @@
 import UIKit
 
 class SettingsViewController: UITableViewController {
-    let userRepository = ServiceProvider.shared.userRepository
+    let userRepository: UserRepository! = ServiceProvider.shared.userRepository
+    @IBOutlet weak var nameLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,7 @@ class SettingsViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = false
+        nameLabel.text = userRepository.currentUserDisplayName
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -43,7 +45,7 @@ class SettingsViewController: UITableViewController {
         self.showAlertDialog(title: "Signout", message: "This will log you out of your account", alertActions:
                                 [
                                     UIAlertAction(title: "Cancel", style: .cancel),
-                                    UIAlertAction(title: "Signout", style: .default, handler: { _ in
+                                    UIAlertAction(title: "Signout", style: .destructive, handler: { _ in
                                         self.userRepository.signOut { result in
                                             switch result {
                                             case .success(_): self.presentingViewController?.dismiss(animated: true, completion: nil)

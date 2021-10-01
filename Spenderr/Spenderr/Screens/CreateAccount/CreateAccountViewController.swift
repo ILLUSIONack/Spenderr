@@ -8,8 +8,8 @@
 import UIKit
 
 class CreateAccountViewController: UIViewController {
-    let userRepository = ServiceProvider.shared.userRepository
-    let firestoreService = ServiceProvider.shared.firestoreService
+    let userRepository: UserRepository! = ServiceProvider.shared.userRepository
+    let firestoreService: FirestoreService! = ServiceProvider.shared.firestoreService
     
     @IBOutlet weak var displayNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!

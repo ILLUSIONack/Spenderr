@@ -9,17 +9,21 @@ import UIKit
 
 class AddSpendingViewController: UIViewController {
     
-    let expenseRepository = ServiceProvider.shared.expenseRepository
-    let userRepository = ServiceProvider.shared.userRepository
+    let expenseRepository: ExpenseRepository! = ServiceProvider.shared.expenseRepository
+    let userRepository: UserRepository! = ServiceProvider.shared.userRepository
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var ammountTextField: UITextField!
     @IBOutlet var backgroundView: UIView!
     @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var panelView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         backgroundView.backgroundColor = UIColor.clear
+        panelView.clipsToBounds = true
+        panelView.layer.cornerRadius = 10
+        panelView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         addButton.layer.masksToBounds = true
         addButton.layer.cornerRadius = 10
         
@@ -36,6 +40,8 @@ class AddSpendingViewController: UIViewController {
                 case .failure(let error):  self.showAlertDialog(title: "Error", message: error.localizedDescription, alertActions: [UIAlertAction(title: "OK", style: .default)])
                 }
             }
+        } else {
+            showAlertDialog(title: "Fields Empty", message: "Please fill in both fields", alertActions: [UIAlertAction(title: "OK", style: .default)])
         }
     }
     

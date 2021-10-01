@@ -9,23 +9,23 @@ import Foundation
 import Firebase
 
 class UserRepository {
-    var firebaseService: FirebaseService
-    
-    let firestoreService = ServiceProvider.shared.firestoreService
+    let firebaseService: FirebaseService!
+    let firestoreService: FirestoreService!
     
     lazy var currentUserId = {
         return self.firebaseService.currentUserID
     }()
     
-    lazy var currentUserDisplayName = {
+    var currentUserDisplayName: String? {
         return self.firebaseService.currentUserDisplayName
-    }()
+    }
+    
     var currentUser: User?
     
     
     init(firebaseService: FirebaseService) {
         self.firebaseService = firebaseService
-
+        self.firestoreService = ServiceProvider.shared.firestoreService
         self.startObservingUser()
     }
     

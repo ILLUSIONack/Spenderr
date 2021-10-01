@@ -8,13 +8,14 @@
 import Foundation
 class ExpenseRepository {
     
-    let firestoreService = ServiceProvider.shared.firestoreService
-    let userRepository = ServiceProvider.shared.userRepository
+    let firestoreService: FirestoreService!
+    let userRepository: UserRepository!
     
     var expenses = [Expense]()
     
     init() {
-        
+        self.firestoreService = ServiceProvider.shared.firestoreService
+        self.userRepository = ServiceProvider.shared.userRepository
     }
     
 //    func startObservingExpenses(onComplete: @escaping (OperationResult<Bool>) -> Void) {

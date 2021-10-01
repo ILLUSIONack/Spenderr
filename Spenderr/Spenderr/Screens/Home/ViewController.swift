@@ -25,11 +25,19 @@ class ViewController: UIViewController, UIAdaptivePresentationControllerDelegate
         loadData()
         setupUI()
         
+
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadData()
+        if let current = userRepository?.currentUserId {
+            ServiceProvider.shared.firestoreService.observeCollection(userId: current)
+
+        }
+
+        
     }
     
     func loadData() {

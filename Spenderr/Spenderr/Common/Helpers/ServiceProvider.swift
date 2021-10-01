@@ -13,10 +13,19 @@ class ServiceProvider {
     static let shared = ServiceProvider()
     private var didInitializeDataSync = false
     
+    var firestoreService: FirestoreService!
+    var userRepository: UserRepository!
+    var expenseRepository: ExpenseRepository!
+    
+    
     func initalizeServiceProviderIfNeeded() {
         if !didInitializeDataSync {
             didInitializeDataSync = true
             FirebaseApp.configure()
+            
+            firestoreService = FirestoreService()
+            userRepository = UserRepository(firebaseService: FirebaseService())
+            expenseRepository = ExpenseRepository()
             
             if true {
                 Firestore.firestore().clearPersistence { error in
@@ -28,8 +37,4 @@ class ServiceProvider {
             }
         }
     }
-    
-    lazy var firestoreService = FirestoreService()
-    lazy var userRepository = UserRepository(firebaseService: FirebaseService())
-    lazy var expenseRepository = ExpenseRepository()
 }
