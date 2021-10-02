@@ -71,14 +71,15 @@ class FirestoreService {
         }
     }
     
-    func observeCollection(userId: String) {
-        db.collection("users/\(userId)/expenses/").addSnapshotListener { querySnapshot, error in
+    func observeCollection(path: String, transform: @escaping ([Expense]) -> Void) {
+        db.collection(path).order(by: "createdAt", descending: true).addSnapshotListener { querySnapshot, error in
             guard let documents = querySnapshot?.documents else {
                 print("Error fetching documents: \(error!)")
                 return
             }
-            let expenses: Array = documents.map { $0["name"]! }
-            print("Current expenses in CA: \(expenses)")
+            
+            let firestoreDocuments: [Expense] = documents.map({ Expense(document: FirestoreDocument(path: $0.reference.path, data: $0.data())) })
+            _ = transform(firestoreDocuments)
         }
         
     }

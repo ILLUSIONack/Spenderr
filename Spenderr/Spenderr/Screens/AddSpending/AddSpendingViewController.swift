@@ -26,7 +26,6 @@ class AddSpendingViewController: UIViewController {
         panelView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         addButton.layer.masksToBounds = true
         addButton.layer.cornerRadius = 10
-        
     }
     
     @IBAction func addButtonPressed(_ sender: Any) {

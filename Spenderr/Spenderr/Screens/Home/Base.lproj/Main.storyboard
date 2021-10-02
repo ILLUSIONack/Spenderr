@@ -110,10 +110,10 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No spendings added" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BHU-bU-Zfo">
-                                <rect key="frame" x="16" y="345" width="382" height="41"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No expenses added yet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BHU-bU-Zfo">
+                                <rect key="frame" x="16" y="585" width="382" height="21"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" red="0.14901960780000001" green="0.1960784314" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SVT-uG-s6R" userLabel="AddTransactionButton">
@@ -138,7 +138,6 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hsf-lb-8nG" secondAttribute="trailing" constant="24" id="LXW-Xi-Xso"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BHU-bU-Zfo" secondAttribute="trailing" constant="16" id="Lm2-Ua-nMN"/>
                             <constraint firstItem="RHg-HV-kWe" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="M07-kb-8Se"/>
-                            <constraint firstItem="BHU-bU-Zfo" firstAttribute="top" secondItem="EBN-rr-tXv" secondAttribute="bottom" constant="24" id="NDi-1e-0xl"/>
                             <constraint firstItem="RHg-HV-kWe" firstAttribute="top" secondItem="EBN-rr-tXv" secondAttribute="bottom" constant="8" symbolic="YES" id="Nu5-FZ-lku"/>
                             <constraint firstItem="yzW-8X-7Sq" firstAttribute="leading" secondItem="Cgx-oy-azj" secondAttribute="trailing" constant="8" id="O0x-ES-NUJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="EBN-rr-tXv" secondAttribute="trailing" constant="32" id="PJL-NS-n46"/>
@@ -156,6 +155,7 @@
                             <constraint firstItem="EBN-rr-tXv" firstAttribute="top" secondItem="ixe-Yd-T0A" secondAttribute="bottom" constant="16" id="rQX-pl-RBs"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yzW-8X-7Sq" secondAttribute="trailing" constant="16" id="suJ-1s-ugK"/>
                             <constraint firstItem="Cgx-oy-azj" firstAttribute="centerY" secondItem="k2w-mT-rZ5" secondAttribute="centerY" id="tta-2c-JU5"/>
+                            <constraint firstItem="BHU-bU-Zfo" firstAttribute="centerY" secondItem="RHg-HV-kWe" secondAttribute="centerY" id="v4C-4p-Vh4"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="HDC-87-YOA"/>

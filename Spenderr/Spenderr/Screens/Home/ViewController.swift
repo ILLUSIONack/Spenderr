@@ -16,28 +16,23 @@ class ViewController: UIViewController, UIAdaptivePresentationControllerDelegate
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var budgetView: UIView!
     @IBOutlet weak var noSpendingLabel: UILabel!
-    let myarray = ["item", "item21"]
-    
     
     @IBOutlet weak var titleTextField: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
         setupUI()
-        
-
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView), name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadData()
-        if let current = userRepository?.currentUserId {
-            ServiceProvider.shared.firestoreService.observeCollection(userId: current)
-
-        }
-
-        
+        expenseRepository?.startObservingExpenses()
+    }
+    
+    @objc func reloadTableView(notification: NSNotification){
+        self.tableView.reloadData()
     }
     
     func loadData() {
@@ -100,17 +95,20 @@ class ViewController: UIViewController, UIAdaptivePresentationControllerDelegate
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if myarray.count <= 0 {
+        let expenses = expenseRepository?.expenses.count ?? 0
+        if expenses == 0 {
             noSpendingLabel.isHidden = false
             tableView.isHidden = true
-            tableView.reloadData()
+        } else {
+            noSpendingLabel.isHidden = true
+            tableView.isHidden = false
         }
-        return myarray.count
+        return expenses
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ExpenseCell", for: indexPath) as! ExpenseCell
-        cell.nameLabel.text = myarray[indexPath.item]
+        cell.nameLabel.text = expenseRepository?.expenses[indexPath.row]
         return cell
     }
     

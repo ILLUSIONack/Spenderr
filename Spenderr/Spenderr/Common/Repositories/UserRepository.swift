@@ -12,16 +12,15 @@ class UserRepository {
     let firebaseService: FirebaseService!
     let firestoreService: FirestoreService!
     
-    lazy var currentUserId = {
+    var currentUserId: String? {
         return self.firebaseService.currentUserID
-    }()
+    }
     
     var currentUserDisplayName: String? {
         return self.firebaseService.currentUserDisplayName
     }
     
     var currentUser: User?
-    
     
     init(firebaseService: FirebaseService) {
         self.firebaseService = firebaseService

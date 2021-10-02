@@ -11,21 +11,35 @@ class ExpenseRepository {
     let firestoreService: FirestoreService!
     let userRepository: UserRepository!
     
-    var expenses = [Expense]()
+    var currentUserId: String? {
+        return self.userRepository.currentUserId
+    }
+
+    var expenses : [String] = [] {
+        didSet{
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
+        }
+    }
     
     init() {
         self.firestoreService = ServiceProvider.shared.firestoreService
         self.userRepository = ServiceProvider.shared.userRepository
+        startObservingExpenses()
     }
     
-//    func startObservingExpenses(onComplete: @escaping (OperationResult<Bool>) -> Void) {
-//        if let currentUser = userRepository.currentUser?.path {
-//            let userExpensesPath = currentUser + "/expenses"
-//            firestoreService.observeDocument(path: userExpensesPath) { (FirestoreDocument) -> CollectionItem in
-//                Expense(document: FirestoreDocument)
-//            }
-//        }
-//    }
+    func startObservingExpenses() {
+        guard let currentUserId = currentUserId else {
+            return
+        }
+        firestoreService.observeCollection(path: "users/\(currentUserId)/expenses/") { (expenseArray) in
+            var stopit = [String]()
+
+            for expense in expenseArray {
+                stopit.append(expense.data["name"] as! String)
+            }
+            self.expenses = stopit
+        }
+    }
     
     func addExpense(userPath: String, name: String, ammount: Int, onComplete: @escaping (OperationResult<Bool>) -> Void) {
         let expense = Expense(userPath: userPath, name: name, ammount: ammount)
@@ -36,6 +50,4 @@ class ExpenseRepository {
         }
         onComplete(OperationResult.success(true))
     }
-    
-
 }

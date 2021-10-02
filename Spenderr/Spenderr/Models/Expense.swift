@@ -15,6 +15,7 @@ class Expense: CollectionItem {
     var id: String
     var path: String
     var reference: DocumentReference
+    var createdAt: Timestamp?
     
     init(userPath: String, name: String, ammount: Int) {
         self.name = name
@@ -22,8 +23,8 @@ class Expense: CollectionItem {
         self.id = UUID().uuidString
         self.path = userPath + "/expenses/" + self.id
         self.reference = ServiceProvider.shared.firestoreService.createReference(path: self.path)
-        self.data = ["name": name, "ammount": ammount, "reference": self.reference]
-
+        self.createdAt = Timestamp(date: Date())
+        self.data = ["name": name, "ammount": ammount, "reference": self.reference, "createdAt": self.createdAt as Any]
     }
     
     init(document: FirestoreDocument) {
