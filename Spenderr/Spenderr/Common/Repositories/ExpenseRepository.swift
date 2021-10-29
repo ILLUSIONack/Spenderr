@@ -14,9 +14,9 @@ class ExpenseRepository {
     var currentUserId: String? {
         return self.userRepository.currentUserId
     }
-
+    
     var expenses : [String] = [] {
-        didSet{
+        didSet {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
         }
     }
@@ -31,13 +31,13 @@ class ExpenseRepository {
         guard let currentUserId = currentUserId else {
             return
         }
-        firestoreService.observeCollection(path: "users/\(currentUserId)/expenses/") { (expenseArray) in
-            var stopit = [String]()
+        firestoreService.observeCollection(path: "users/\(currentUserId)/expenses/") { (expenseList) in
+            var expenses = [String]()
 
-            for expense in expenseArray {
-                stopit.append(expense.data["name"] as! String)
+            for expense in expenseList {
+                expenses.append(expense.data["name"] as! String)
             }
-            self.expenses = stopit
+            self.expenses = expenses
         }
     }
     

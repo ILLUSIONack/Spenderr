@@ -20,6 +20,14 @@ class ViewController: UIViewController, UIAdaptivePresentationControllerDelegate
     @IBOutlet weak var titleTextField: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        for family: String in UIFont.familyNames
+               {
+                   print(family)
+                   for names: String in UIFont.fontNames(forFamilyName: family)
+                   {
+                       print("== \(names)")
+                   }
+               }
         loadData()
         setupUI()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView), name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
@@ -31,7 +39,7 @@ class ViewController: UIViewController, UIAdaptivePresentationControllerDelegate
         expenseRepository?.startObservingExpenses()
     }
     
-    @objc func reloadTableView(notification: NSNotification){
+    @objc func reloadTableView(notification: NSNotification) {
         self.tableView.reloadData()
     }
     
