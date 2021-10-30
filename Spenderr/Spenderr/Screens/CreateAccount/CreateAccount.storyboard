@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Belfort-Light.ttf">
+            <string>BelfortLight</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Create Account-->
         <scene sceneID="s0d-6b-0kx">
@@ -17,31 +22,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="CA3-Qc-l6h">
-                                <rect key="frame" x="8" y="345" width="398" height="206"/>
+                                <rect key="frame" x="24" y="303" width="366" height="290"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="29" translatesAutoresizingMaskIntoConstraints="NO" id="1Yb-Ut-gzq">
-                                        <rect key="frame" x="0.0" y="0.0" width="398" height="160"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="366" height="226"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type displayname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TnP-eK-f6t">
-                                                <rect key="frame" x="0.0" y="0.0" width="398" height="34"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type display name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hZx-iN-CgN" customClass="MDCFilledTextField">
+                                                <rect key="frame" x="0.0" y="0.0" width="366" height="56"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="34" id="3h6-gP-MLr"/>
+                                                    <constraint firstAttribute="height" constant="56" id="EIh-9I-UwZ"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UIV-ei-vpb">
-                                                <rect key="frame" x="0.0" y="63" width="398" height="34"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="87Q-SF-iGY" customClass="MDCFilledTextField">
+                                                <rect key="frame" x="0.0" y="85" width="366" height="56"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="34" id="4ze-yu-E4M"/>
+                                                    <constraint firstAttribute="height" constant="56" id="jdp-Yx-r9W"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iza-Id-6RM">
-                                                <rect key="frame" x="0.0" y="126" width="398" height="34"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9jy-er-x6R" customClass="MDCFilledTextField">
+                                                <rect key="frame" x="0.0" y="170" width="366" height="56"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="34" id="Mg0-0d-sKK"/>
+                                                    <constraint firstAttribute="height" constant="56" id="jge-UU-baX"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -49,11 +54,15 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pJQ-Kw-eWa">
-                                        <rect key="frame" x="0.0" y="176" width="398" height="30"/>
+                                        <rect key="frame" x="0.0" y="242" width="366" height="48"/>
+                                        <color key="backgroundColor" red="0.1253813124" green="0.1253813124" blue="0.1253813124" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="04F-XR-673"/>
+                                            <constraint firstAttribute="height" constant="48" id="04F-XR-673"/>
                                         </constraints>
-                                        <state key="normal" title="Create account"/>
+                                        <fontDescription key="fontDescription" name="BelfortLight" family="Belfort" pointSize="18"/>
+                                        <state key="normal" title="Create account">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="createAccountButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="DpN-9X-fhC"/>
                                         </connections>
@@ -66,26 +75,35 @@
                                     <constraint firstAttribute="height" constant="48" id="LcN-Rs-WKY"/>
                                     <constraint firstAttribute="width" secondItem="zDe-TG-4fw" secondAttribute="height" multiplier="1:1" id="asV-XX-AhS"/>
                                 </constraints>
-                                <state key="normal" image="ic_back_arrow"/>
+                                <state key="normal" image="ic_back"/>
                                 <connections>
                                     <action selector="backButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="MhO-JE-Om5"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="My Post" translatesAutoresizingMaskIntoConstraints="NO" id="u5O-3a-fFb">
+                                <rect key="frame" x="0.0" y="101" width="414" height="194"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="194" id="M5R-rz-WAG"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                        <color key="backgroundColor" white="0.059999999999999998" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="zDe-TG-4fw" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="31D-Mo-Tk1"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="CA3-Qc-l6h" secondAttribute="trailing" constant="8" id="5cI-CY-Eaw"/>
-                            <constraint firstItem="CA3-Qc-l6h" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="8" id="Fji-5t-4nD"/>
-                            <constraint firstItem="CA3-Qc-l6h" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="Yc2-lD-UCX"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="u5O-3a-fFb" secondAttribute="trailing" id="576-ap-3m7"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="CA3-Qc-l6h" secondAttribute="trailing" constant="24" id="5cI-CY-Eaw"/>
+                            <constraint firstItem="u5O-3a-fFb" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="CL4-QM-NRJ"/>
+                            <constraint firstItem="CA3-Qc-l6h" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="Fji-5t-4nD"/>
+                            <constraint firstItem="CA3-Qc-l6h" firstAttribute="top" secondItem="u5O-3a-fFb" secondAttribute="bottom" constant="8" id="h23-gA-qWH"/>
                             <constraint firstItem="zDe-TG-4fw" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="8" id="mAX-C6-jAv"/>
+                            <constraint firstItem="u5O-3a-fFb" firstAttribute="top" secondItem="zDe-TG-4fw" secondAttribute="bottom" constant="9" id="xq1-eG-2kf"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="displayNameTextField" destination="TnP-eK-f6t" id="tJ9-0j-8k3"/>
-                        <outlet property="emailTextField" destination="UIV-ei-vpb" id="eqz-nU-1Hl"/>
-                        <outlet property="passwordTextField" destination="iza-Id-6RM" id="6Xp-06-Ls5"/>
+                        <outlet property="displayNameTextField" destination="hZx-iN-CgN" id="KHa-No-8fv"/>
+                        <outlet property="emailTextField" destination="87Q-SF-iGY" id="aYM-Sf-GVZ"/>
+                        <outlet property="passwordTextField" destination="9jy-er-x6R" id="9Nf-c2-h19"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -94,9 +112,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ic_back_arrow" width="54" height="54"/>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <image name="My Post" width="1080" height="1080"/>
+        <image name="ic_back" width="24" height="24"/>
     </resources>
 </document>

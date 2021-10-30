@@ -6,17 +6,32 @@
 //
 
 import UIKit
+import MaterialComponents
 
-class CreateAccountViewController: UIViewController {
+class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     let userRepository: UserRepository! = ServiceProvider.shared.userRepository
     let firestoreService: FirestoreService! = ServiceProvider.shared.firestoreService
     
-    @IBOutlet weak var displayNameTextField: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var displayNameTextField: MDCFilledTextField!
+    @IBOutlet weak var emailTextField: MDCFilledTextField!
+    @IBOutlet weak var passwordTextField: MDCFilledTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        DispatchQueue.main.async {
+            self.setupUI()
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
     }
     
     @IBAction func createAccountButtonPressed(_ sender: Any) {
@@ -51,6 +66,18 @@ class CreateAccountViewController: UIViewController {
         }
     }
     
+    func setupUI() {
+        displayNameTextField.label.text = "Display name"
+        emailTextField.label.text = "Email"
+        passwordTextField.label.text = "Password"
+        displayNameTextField.delegate = self
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        setupMaterialAuthTextField(textField: displayNameTextField)
+        setupMaterialAuthTextField(textField: emailTextField)
+        setupMaterialAuthTextField(textField: passwordTextField)
+    }
+    
     @IBAction func backButtonPressed(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
@@ -65,5 +92,42 @@ class CreateAccountViewController: UIViewController {
             alert.addAction(alertAction)
         }
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField.text! == "" {
+            return false
+        } else if textField == displayNameTextField {
+            textField.resignFirstResponder()
+            emailTextField.becomeFirstResponder()
+            return true
+        } else if textField == emailTextField {
+            textField.resignFirstResponder()
+            passwordTextField.becomeFirstResponder()
+            return true
+        } else if textField == passwordTextField {
+            textField.resignFirstResponder()
+            return true
+        }else {
+            return false
+        }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height/2
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
     }
 }

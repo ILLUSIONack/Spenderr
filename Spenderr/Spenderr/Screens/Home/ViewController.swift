@@ -16,20 +16,14 @@ class ViewController: UIViewController, UIAdaptivePresentationControllerDelegate
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var budgetView: UIView!
     @IBOutlet weak var noSpendingLabel: UILabel!
-    
     @IBOutlet weak var titleTextField: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        for family: String in UIFont.familyNames
-               {
-                   print(family)
-                   for names: String in UIFont.fontNames(forFamilyName: family)
-                   {
-                       print("== \(names)")
-                   }
-               }
+        DispatchQueue.main.async {
+            self.setupUI()
+        }
         loadData()
-        setupUI()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView), name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
     }
     
@@ -73,13 +67,11 @@ class ViewController: UIViewController, UIAdaptivePresentationControllerDelegate
         present(nvc, animated: true)
     }
     
-   
-    
     @IBAction func settingsButtonPressed(_ sender: Any) {
         navigateToSettings()
     }
     
-    @IBAction func addButton(_ sender: Any) {
+    @IBAction func addButtonPressed(_ sender: Any) {
         let nvc = UIStoryboard(name: "AddSpending", bundle: nil).instantiateInitialViewController() as! UINavigationController
         if #available(iOS 13.0, *) {
             nvc.modalPresentationStyle = .automatic

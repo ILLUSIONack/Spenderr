@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ry1-oQ-Vf0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ry1-oQ-Vf0">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Belfort-Light.ttf">
+            <string>BelfortLight</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Onboarding View Controller-->
         <scene sceneID="s0d-6b-0kx">
@@ -17,18 +22,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="wCn-uZ-8uC">
-                                <rect key="frame" x="8" y="775" width="398" height="79"/>
+                                <rect key="frame" x="24" y="723" width="366" height="115"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ido-ID-zSr">
-                                        <rect key="frame" x="0.0" y="0.0" width="398" height="30"/>
-                                        <state key="normal" title="Signup"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="366" height="48"/>
+                                        <color key="backgroundColor" red="0.1253813124" green="0.1253813124" blue="0.1253813124" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="y2b-0h-3hh"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="BelfortLight" family="Belfort" pointSize="18"/>
+                                        <state key="normal" title="Signup">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="signUpButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="llI-9w-3dx"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="seD-tI-Caa">
-                                        <rect key="frame" x="0.0" y="49" width="398" height="30"/>
-                                        <state key="normal" title="Login"/>
+                                        <rect key="frame" x="0.0" y="67" width="366" height="48"/>
+                                        <color key="backgroundColor" red="0.1253813124" green="0.1253813124" blue="0.1253813124" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="nND-ki-NI3"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="BelfortLight" family="Belfort" pointSize="18"/>
+                                        <state key="normal" title="Login">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="loginButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="WvT-Ie-AVw"/>
                                         </connections>
@@ -37,14 +56,18 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemGray2Color"/>
+                        <color key="backgroundColor" white="0.059999999999999998" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="wCn-uZ-8uC" secondAttribute="bottom" constant="8" id="4NN-pe-kHD"/>
-                            <constraint firstItem="wCn-uZ-8uC" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="8" id="7JK-va-MHo"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="wCn-uZ-8uC" secondAttribute="trailing" constant="8" id="Dkf-hH-zdG"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="wCn-uZ-8uC" secondAttribute="bottom" constant="24" id="4NN-pe-kHD"/>
+                            <constraint firstItem="wCn-uZ-8uC" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="7JK-va-MHo"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="wCn-uZ-8uC" secondAttribute="trailing" constant="24" id="Dkf-hH-zdG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rAg-A4-g66"/>
+                    <connections>
+                        <outlet property="loginButton" destination="seD-tI-Caa" id="xor-PH-Ze6"/>
+                        <outlet property="registerButton" destination="ido-ID-zSr" id="wtV-Ek-BhG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -68,9 +91,4 @@
             <point key="canvasLocation" x="-100" y="83"/>
         </scene>
     </scenes>
-    <resources>
-        <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-    </resources>
 </document>

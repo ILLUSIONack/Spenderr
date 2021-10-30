@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lxV-OU-qaX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lxV-OU-qaX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Belfort-Light.ttf">
+            <string>BelfortLight</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -26,7 +30,7 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Usman" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cgx-oy-azj">
                                 <rect key="frame" x="72" y="58" width="269" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="BelfortLight" family="Belfort" pointSize="18"/>
                                 <color key="textColor" red="0.14901960784313725" green="0.19607843137254902" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -41,37 +45,45 @@
                                     <action selector="settingsButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jjf-AU-5pe"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsf-lb-8nG">
-                                <rect key="frame" x="24" y="108" width="366" height="0.0"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="0.0"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spent history" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EBN-rr-tXv">
-                                <rect key="frame" x="32" y="244" width="350" height="29"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ixe-Yd-T0A">
-                                <rect key="frame" x="24" y="124" width="366" height="104"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="hKg-8k-CAk">
+                                <rect key="frame" x="16" y="108" width="382" height="209"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="150" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fgZ-Lw-jhu">
-                                        <rect key="frame" x="156" y="32.5" width="54" height="39"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                        <color key="textColor" red="0.2402115501" green="1" blue="0.21869368920000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Balance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsf-lb-8nG">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="45.5"/>
+                                        <fontDescription key="fontDescription" name="BelfortLight" family="Belfort" pointSize="40"/>
+                                        <color key="textColor" white="0.059999999999999998" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ixe-Yd-T0A">
+                                        <rect key="frame" x="0.0" y="61.5" width="382" height="104"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="150" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fgZ-Lw-jhu">
+                                                <rect key="frame" x="167" y="34" width="48.5" height="36.5"/>
+                                                <fontDescription key="fontDescription" name="BelfortLight" family="Belfort" pointSize="32"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="fgZ-Lw-jhu" firstAttribute="centerX" secondItem="ixe-Yd-T0A" secondAttribute="centerX" id="BqB-uZ-IQ8"/>
+                                            <constraint firstAttribute="height" constant="104" id="a2q-Jn-Pyl"/>
+                                            <constraint firstItem="fgZ-Lw-jhu" firstAttribute="centerY" secondItem="ixe-Yd-T0A" secondAttribute="centerY" id="oGa-Qt-abq"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spent history" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EBN-rr-tXv">
+                                        <rect key="frame" x="0.0" y="181.5" width="382" height="27.5"/>
+                                        <fontDescription key="fontDescription" name="BelfortLight" family="Belfort" pointSize="24"/>
+                                        <color key="textColor" white="0.059999999999999998" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.054901960784313725" green="0.30196078431372547" blue="0.64313725490196072" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstItem="fgZ-Lw-jhu" firstAttribute="centerX" secondItem="ixe-Yd-T0A" secondAttribute="centerX" id="BqB-uZ-IQ8"/>
-                                    <constraint firstAttribute="height" constant="104" id="a2q-Jn-Pyl"/>
-                                    <constraint firstItem="fgZ-Lw-jhu" firstAttribute="centerY" secondItem="ixe-Yd-T0A" secondAttribute="centerY" id="oGa-Qt-abq"/>
-                                </constraints>
-                            </view>
+                            </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RHg-HV-kWe">
-                                <rect key="frame" x="0.0" y="281" width="414" height="581"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="0.0" y="325" width="414" height="571"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ExpenseCell" id="mSI-dZ-ygU" customClass="ExpenseCell" customModule="Spenderr" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="64"/>
@@ -89,8 +101,8 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBa-tp-HAP">
-                                                    <rect key="frame" x="72" y="20.5" width="314" height="23"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                    <rect key="frame" x="72" y="19.5" width="314" height="25"/>
+                                                    <fontDescription key="fontDescription" name="BelfortLight" family="Belfort" pointSize="22"/>
                                                     <color key="textColor" red="0.14901960780000001" green="0.1960784314" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -104,6 +116,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="ng2-b0-HyZ" secondAttribute="bottom" constant="8" id="y70-BA-mku"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="iconView" destination="ng2-b0-HyZ" id="GTy-Ea-mjU"/>
                                             <outlet property="nameLabel" destination="kBa-tp-HAP" id="GFt-iq-e90"/>
@@ -112,8 +125,8 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No expenses added yet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BHU-bU-Zfo">
-                                <rect key="frame" x="16" y="563" width="382" height="17"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <rect key="frame" x="16" y="601" width="382" height="19.5"/>
+                                <fontDescription key="fontDescription" name="BelfortLight" family="Belfort" pointSize="17"/>
                                 <color key="textColor" red="0.14901960780000001" green="0.1960784314" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -125,35 +138,29 @@
                                 </constraints>
                                 <state key="normal" image="ic_add"/>
                                 <connections>
-                                    <action selector="addButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0bc-Yk-XUh"/>
+                                    <action selector="addButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jf3-Xf-xtf"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hKg-8k-CAk" secondAttribute="trailing" constant="16" id="BQv-d7-3WS"/>
                             <constraint firstItem="SVT-uG-s6R" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="CVf-N2-ROW"/>
                             <constraint firstItem="BHU-bU-Zfo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="GyX-n8-kLE"/>
-                            <constraint firstItem="EBN-rr-tXv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="HGo-7F-kAF"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RHg-HV-kWe" secondAttribute="trailing" id="LVD-bH-TPb"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hsf-lb-8nG" secondAttribute="trailing" constant="24" id="LXW-Xi-Xso"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BHU-bU-Zfo" secondAttribute="trailing" constant="16" id="Lm2-Ua-nMN"/>
-                            <constraint firstItem="RHg-HV-kWe" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="M07-kb-8Se"/>
-                            <constraint firstItem="RHg-HV-kWe" firstAttribute="top" secondItem="EBN-rr-tXv" secondAttribute="bottom" constant="8" symbolic="YES" id="Nu5-FZ-lku"/>
+                            <constraint firstItem="RHg-HV-kWe" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="M07-kb-8Se"/>
                             <constraint firstItem="yzW-8X-7Sq" firstAttribute="leading" secondItem="Cgx-oy-azj" secondAttribute="trailing" constant="8" id="O0x-ES-NUJ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="EBN-rr-tXv" secondAttribute="trailing" constant="32" id="PJL-NS-n46"/>
+                            <constraint firstItem="hKg-8k-CAk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="PeN-Dd-L4Z"/>
                             <constraint firstItem="RHg-HV-kWe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Qsh-Xq-FxL"/>
                             <constraint firstItem="yzW-8X-7Sq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="TV0-gd-sfr"/>
-                            <constraint firstItem="hsf-lb-8nG" firstAttribute="top" secondItem="k2w-mT-rZ5" secondAttribute="bottom" constant="16" id="axv-8M-hL6"/>
-                            <constraint firstItem="hsf-lb-8nG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="ayT-fh-hyn"/>
                             <constraint firstItem="k2w-mT-rZ5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="fVQ-q0-SAv"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ixe-Yd-T0A" secondAttribute="trailing" constant="24" id="gfj-a7-xmA"/>
+                            <constraint firstItem="RHg-HV-kWe" firstAttribute="top" secondItem="hKg-8k-CAk" secondAttribute="bottom" constant="8" symbolic="YES" id="gjl-uQ-pIc"/>
                             <constraint firstItem="SVT-uG-s6R" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="jYs-aj-gy5"/>
-                            <constraint firstItem="ixe-Yd-T0A" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="kBN-LI-ybl"/>
                             <constraint firstItem="k2w-mT-rZ5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="kzh-0B-OVQ"/>
+                            <constraint firstItem="hKg-8k-CAk" firstAttribute="top" secondItem="k2w-mT-rZ5" secondAttribute="bottom" constant="16" id="n5K-gB-5Lf"/>
                             <constraint firstItem="Cgx-oy-azj" firstAttribute="leading" secondItem="k2w-mT-rZ5" secondAttribute="trailing" constant="8" id="pOE-k8-2Wy"/>
-                            <constraint firstItem="ixe-Yd-T0A" firstAttribute="top" secondItem="hsf-lb-8nG" secondAttribute="bottom" constant="16" id="qRR-wp-AyH"/>
-                            <constraint firstItem="EBN-rr-tXv" firstAttribute="top" secondItem="ixe-Yd-T0A" secondAttribute="bottom" constant="16" id="rQX-pl-RBs"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yzW-8X-7Sq" secondAttribute="trailing" constant="16" id="suJ-1s-ugK"/>
                             <constraint firstItem="Cgx-oy-azj" firstAttribute="centerY" secondItem="k2w-mT-rZ5" secondAttribute="centerY" id="tta-2c-JU5"/>
                             <constraint firstItem="BHU-bU-Zfo" firstAttribute="centerY" secondItem="RHg-HV-kWe" secondAttribute="centerY" id="v4C-4p-Vh4"/>
@@ -193,8 +200,5 @@
         <image name="ic_add" width="80" height="80"/>
         <image name="ic_settings" width="24" height="24"/>
         <image name="profile_picture" width="40" height="40"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nze-8H-wfM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nze-8H-wfM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Belfort-Light.ttf">
+            <string>BelfortLight</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Add Spending View Controller-->
         <scene sceneID="s0d-6b-0kx">
@@ -17,38 +23,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yvi-Fd-JZo">
-                                <rect key="frame" x="0.0" y="634" width="414" height="262"/>
+                                <rect key="frame" x="0.0" y="596.5" width="414" height="299.5"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="81b-QC-bu5">
-                                        <rect key="frame" x="310" y="190" width="80" height="48"/>
-                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="80" id="E72-xh-N6Q"/>
-                                            <constraint firstAttribute="height" constant="48" id="z45-uM-MLY"/>
-                                        </constraints>
-                                        <state key="normal" title="Add"/>
-                                        <connections>
-                                            <action selector="addButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="480-fo-SuL"/>
-                                        </connections>
-                                    </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Price" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ae7-Yc-Zed">
-                                        <rect key="frame" x="24" y="127" width="366" height="34"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add spending" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rld-QS-e1e">
-                                        <rect key="frame" x="135" y="16" width="144" height="29"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="978-RE-P1k">
-                                        <rect key="frame" x="24" y="69" width="366" height="34"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IBB-XO-kEI">
                                         <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
                                         <constraints>
@@ -60,21 +36,57 @@
                                             <action selector="dismissButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Tdi-UN-BNd"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add spending" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rld-QS-e1e">
+                                        <rect key="frame" x="145.5" y="16" width="123.5" height="27.5"/>
+                                        <fontDescription key="fontDescription" name="BelfortLight" family="Belfort" pointSize="24"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="HlV-u8-onn">
+                                        <rect key="frame" x="24" y="59.5" width="366" height="192"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AD3-Xt-1f5" customClass="MDCFilledTextField">
+                                                <rect key="frame" x="0.0" y="0.0" width="366" height="56"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="56" id="9ju-Ha-bI3"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type ammount in euros" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="492-gB-Ikp" customClass="MDCFilledTextField">
+                                                <rect key="frame" x="0.0" y="72" width="366" height="56"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="56" id="CYa-Go-dsv"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="81b-QC-bu5">
+                                                <rect key="frame" x="0.0" y="144" width="366" height="48"/>
+                                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="48" id="z45-uM-MLY"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="BelfortLight" family="Belfort" pointSize="18"/>
+                                                <state key="normal" title="Add">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="addButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="480-fo-SuL"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.054901960780000002" green="0.30196078430000001" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.059999999999999998" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="81b-QC-bu5" firstAttribute="top" secondItem="Ae7-Yc-Zed" secondAttribute="bottom" constant="29" id="3Y9-M6-wEy"/>
                                     <constraint firstItem="IBB-XO-kEI" firstAttribute="top" secondItem="yvi-Fd-JZo" secondAttribute="top" id="5nz-lz-jdO"/>
-                                    <constraint firstAttribute="bottom" secondItem="81b-QC-bu5" secondAttribute="bottom" constant="24" id="CL1-KV-WJ6"/>
-                                    <constraint firstAttribute="trailing" secondItem="978-RE-P1k" secondAttribute="trailing" constant="24" id="KVj-11-BRp"/>
-                                    <constraint firstItem="978-RE-P1k" firstAttribute="leading" secondItem="yvi-Fd-JZo" secondAttribute="leading" constant="24" id="SDx-NX-VIT"/>
-                                    <constraint firstItem="Ae7-Yc-Zed" firstAttribute="leading" secondItem="yvi-Fd-JZo" secondAttribute="leading" constant="24" id="eNr-OI-CA4"/>
+                                    <constraint firstAttribute="bottom" secondItem="HlV-u8-onn" secondAttribute="bottom" constant="48" id="9Lu-0K-JRs"/>
+                                    <constraint firstItem="HlV-u8-onn" firstAttribute="top" secondItem="rld-QS-e1e" secondAttribute="bottom" constant="16" id="NiX-Gc-LWH"/>
                                     <constraint firstItem="IBB-XO-kEI" firstAttribute="leading" secondItem="yvi-Fd-JZo" secondAttribute="leading" id="fIs-6N-nGT"/>
-                                    <constraint firstItem="Ae7-Yc-Zed" firstAttribute="top" secondItem="978-RE-P1k" secondAttribute="bottom" constant="24" id="fgS-Zc-GpT"/>
+                                    <constraint firstItem="HlV-u8-onn" firstAttribute="leading" secondItem="yvi-Fd-JZo" secondAttribute="leading" constant="24" id="ids-vW-QCK"/>
                                     <constraint firstItem="rld-QS-e1e" firstAttribute="centerX" secondItem="yvi-Fd-JZo" secondAttribute="centerX" id="kK1-Jg-IAf"/>
-                                    <constraint firstAttribute="trailing" secondItem="81b-QC-bu5" secondAttribute="trailing" constant="24" id="kfO-9i-ulC"/>
-                                    <constraint firstAttribute="trailing" secondItem="Ae7-Yc-Zed" secondAttribute="trailing" constant="24" id="tep-Nd-LuK"/>
-                                    <constraint firstItem="978-RE-P1k" firstAttribute="top" secondItem="rld-QS-e1e" secondAttribute="bottom" constant="24" id="w50-AT-dTs"/>
+                                    <constraint firstAttribute="trailing" secondItem="HlV-u8-onn" secondAttribute="trailing" constant="24" id="nH2-yK-BnS"/>
                                     <constraint firstItem="rld-QS-e1e" firstAttribute="top" secondItem="yvi-Fd-JZo" secondAttribute="top" constant="16" id="zWK-Df-45e"/>
                                 </constraints>
                             </view>
@@ -90,9 +102,9 @@
                     <navigationItem key="navigationItem" id="T5x-zu-B7m"/>
                     <connections>
                         <outlet property="addButton" destination="81b-QC-bu5" id="mhb-D9-7JZ"/>
-                        <outlet property="ammountTextField" destination="Ae7-Yc-Zed" id="979-7t-Svt"/>
+                        <outlet property="ammountTextField" destination="492-gB-Ikp" id="RAF-F4-7AN"/>
                         <outlet property="backgroundView" destination="5EZ-qb-Rvc" id="Y6x-3V-M4N"/>
-                        <outlet property="nameTextField" destination="978-RE-P1k" id="d3P-iM-2zx"/>
+                        <outlet property="nameTextField" destination="AD3-Xt-1f5" id="Th7-uG-WuA"/>
                         <outlet property="panelView" destination="yvi-Fd-JZo" id="22c-j8-tfb"/>
                     </connections>
                 </viewController>
