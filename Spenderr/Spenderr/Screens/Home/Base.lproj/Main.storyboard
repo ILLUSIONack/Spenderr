@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -176,7 +177,189 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="618.84057971014499" y="51.5625"/>
+            <point key="canvasLocation" x="2074" y="52"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="6il-z6-Q2A">
+            <objects>
+                <viewController id="rn5-OD-5Nm" customClass="ViewController" customModule="Spenderr" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="264-lk-H9G">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SLu-NL-nQN">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="dQC-ay-RWV">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_picture" translatesAutoresizingMaskIntoConstraints="NO" id="Onm-cB-v1o">
+                                            <rect key="frame" x="16" y="0.0" width="48" height="48"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="48" id="Skh-Td-Ahx"/>
+                                                <constraint firstAttribute="width" secondItem="Onm-cB-v1o" secondAttribute="height" multiplier="1:1" id="s9Y-Ay-261"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Usman" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J1v-z2-3cf">
+                                            <rect key="frame" x="72" y="14" width="285" height="20.5"/>
+                                            <fontDescription key="fontDescription" name="BelfortLight" family="Belfort" pointSize="18"/>
+                                            <color key="textColor" red="0.14901960780000001" green="0.1960784314" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dLS-M5-0JI" userLabel="SettingsButton">
+                                            <rect key="frame" x="365" y="0.0" width="49" height="48"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="dLS-M5-0JI" secondAttribute="height" multiplier="1:1" constant="1" id="F6d-Ev-tmj"/>
+                                                <constraint firstAttribute="height" constant="48" id="hvX-nH-FSx"/>
+                                            </constraints>
+                                            <state key="normal" image="ic_settings"/>
+                                            <connections>
+                                                <action selector="settingsButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XWf-dz-hM5"/>
+                                                <action selector="settingsButtonPressed:" destination="rn5-OD-5Nm" eventType="touchUpInside" id="vHR-yE-Uwa"/>
+                                            </connections>
+                                        </button>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="DFJ-eq-M2O">
+                                            <rect key="frame" x="16" y="72" width="382" height="220"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Balance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bx3-lw-DMA">
+                                                    <rect key="frame" x="0.0" y="0.0" width="382" height="45.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="45.5" id="tlR-8C-arN"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="BelfortLight" family="Belfort" pointSize="40"/>
+                                                    <color key="textColor" white="0.059999999999999998" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fe5-YO-Xlx">
+                                                    <rect key="frame" x="0.0" y="61.5" width="382" height="115"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="150" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kbU-oU-D0g">
+                                                            <rect key="frame" x="167" y="39.5" width="48.5" height="36.5"/>
+                                                            <fontDescription key="fontDescription" name="BelfortLight" family="Belfort" pointSize="32"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="104" id="7BQ-oa-40N"/>
+                                                        <constraint firstItem="kbU-oU-D0g" firstAttribute="centerX" secondItem="fe5-YO-Xlx" secondAttribute="centerX" id="Mvh-fF-P5B"/>
+                                                        <constraint firstItem="kbU-oU-D0g" firstAttribute="centerY" secondItem="fe5-YO-Xlx" secondAttribute="centerY" id="TdC-Uz-ucf"/>
+                                                    </constraints>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spent history" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0dp-jC-4vP">
+                                                    <rect key="frame" x="0.0" y="192.5" width="382" height="27.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="27.5" id="DtY-bo-KJW"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="BelfortLight" family="Belfort" pointSize="24"/>
+                                                    <color key="textColor" white="0.059999999999999998" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstItem="DFJ-eq-M2O" firstAttribute="top" secondItem="Onm-cB-v1o" secondAttribute="bottom" constant="24" id="5R3-i2-XHA"/>
+                                        <constraint firstItem="dLS-M5-0JI" firstAttribute="width" secondItem="dLS-M5-0JI" secondAttribute="height" multiplier="1:1" constant="1" id="AOd-8e-za4"/>
+                                        <constraint firstItem="J1v-z2-3cf" firstAttribute="leading" secondItem="Onm-cB-v1o" secondAttribute="trailing" constant="8" id="EtO-QV-gfS"/>
+                                        <constraint firstItem="Onm-cB-v1o" firstAttribute="top" secondItem="dQC-ay-RWV" secondAttribute="top" id="PwE-jJ-R6c"/>
+                                        <constraint firstItem="Onm-cB-v1o" firstAttribute="leading" secondItem="dQC-ay-RWV" secondAttribute="leading" constant="16" id="cnl-8h-tRx"/>
+                                        <constraint firstAttribute="trailing" secondItem="dLS-M5-0JI" secondAttribute="trailing" id="je6-W3-8qI"/>
+                                        <constraint firstAttribute="bottom" secondItem="DFJ-eq-M2O" secondAttribute="bottom" constant="8" id="nrM-XY-qdA"/>
+                                        <constraint firstItem="dLS-M5-0JI" firstAttribute="top" secondItem="dQC-ay-RWV" secondAttribute="top" id="pke-1s-sbB"/>
+                                        <constraint firstAttribute="trailing" secondItem="DFJ-eq-M2O" secondAttribute="trailing" constant="16" id="sng-Un-qvS"/>
+                                        <constraint firstItem="J1v-z2-3cf" firstAttribute="centerY" secondItem="Onm-cB-v1o" secondAttribute="centerY" id="v6T-F1-51s"/>
+                                        <constraint firstItem="dLS-M5-0JI" firstAttribute="leading" secondItem="J1v-z2-3cf" secondAttribute="trailing" constant="8" id="vvm-76-NhA"/>
+                                        <constraint firstItem="DFJ-eq-M2O" firstAttribute="leading" secondItem="dQC-ay-RWV" secondAttribute="leading" constant="16" id="zGm-El-AdN"/>
+                                    </constraints>
+                                </view>
+                                <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No expenses added yet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RUB-tY-mot">
+                                    <rect key="frame" x="0.0" y="431" width="414" height="19.5"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" name="BelfortLight" family="Belfort" pointSize="17"/>
+                                    <color key="textColor" red="0.14901960780000001" green="0.1960784314" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ExpenseCell" id="Rvf-ul-fUZ" customClass="ExpenseCell" customModule="Spenderr" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="344.5" width="414" height="64"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Rvf-ul-fUZ" id="wJx-tb-veo">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iVO-Yz-rtL">
+                                                    <rect key="frame" x="16" y="8" width="48" height="48"/>
+                                                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="iVO-Yz-rtL" secondAttribute="height" multiplier="1:1" id="Xxc-5O-NTR"/>
+                                                        <constraint firstAttribute="height" constant="48" id="gbE-4h-Qxr"/>
+                                                    </constraints>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tyN-aQ-T4o">
+                                                    <rect key="frame" x="72" y="19.5" width="314" height="25"/>
+                                                    <fontDescription key="fontDescription" name="BelfortLight" family="Belfort" pointSize="22"/>
+                                                    <color key="textColor" red="0.14901960780000001" green="0.1960784314" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="tyN-aQ-T4o" firstAttribute="centerY" secondItem="wJx-tb-veo" secondAttribute="centerY" id="M8L-8t-akb"/>
+                                                <constraint firstItem="iVO-Yz-rtL" firstAttribute="leading" secondItem="wJx-tb-veo" secondAttribute="leading" constant="16" id="lht-ZV-md9"/>
+                                                <constraint firstItem="tyN-aQ-T4o" firstAttribute="leading" secondItem="iVO-Yz-rtL" secondAttribute="trailing" constant="8" id="ozS-51-iHm"/>
+                                                <constraint firstAttribute="bottom" secondItem="iVO-Yz-rtL" secondAttribute="bottom" constant="8" id="qus-Fx-WCp"/>
+                                                <constraint firstItem="iVO-Yz-rtL" firstAttribute="top" secondItem="wJx-tb-veo" secondAttribute="top" constant="8" id="rLe-DE-3Bt"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="tyN-aQ-T4o" secondAttribute="trailing" constant="8" id="rTa-lF-2T0"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="iconView" destination="iVO-Yz-rtL" id="Z6v-Cj-vmM"/>
+                                            <outlet property="nameLabel" destination="tyN-aQ-T4o" id="UDk-Jr-2T2"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Sk-eR-ls2" userLabel="AddTransactionButton">
+                                <rect key="frame" x="167" y="758" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="oVu-Hc-wGw"/>
+                                    <constraint firstAttribute="width" secondItem="6Sk-eR-ls2" secondAttribute="height" multiplier="1:1" id="ySP-Zn-YuN"/>
+                                </constraints>
+                                <state key="normal" image="ic_add"/>
+                                <connections>
+                                    <action selector="addButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DTC-wX-iia"/>
+                                    <action selector="addButtonPressed:" destination="rn5-OD-5Nm" eventType="touchUpInside" id="v0z-Fh-Klz"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="VZo-ek-MKQ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="VZo-ek-MKQ" firstAttribute="bottom" secondItem="6Sk-eR-ls2" secondAttribute="bottom" constant="24" id="EEJ-tj-9Yk"/>
+                            <constraint firstItem="SLu-NL-nQN" firstAttribute="trailing" secondItem="VZo-ek-MKQ" secondAttribute="trailing" id="EPw-rP-49N"/>
+                            <constraint firstItem="SLu-NL-nQN" firstAttribute="leading" secondItem="VZo-ek-MKQ" secondAttribute="leading" id="F3K-mB-8y7"/>
+                            <constraint firstItem="6Sk-eR-ls2" firstAttribute="centerX" secondItem="264-lk-H9G" secondAttribute="centerX" id="fWM-Ld-5F9"/>
+                            <constraint firstItem="SLu-NL-nQN" firstAttribute="top" secondItem="VZo-ek-MKQ" secondAttribute="top" id="lBa-Cy-503"/>
+                            <constraint firstItem="VZo-ek-MKQ" firstAttribute="bottom" secondItem="SLu-NL-nQN" secondAttribute="bottom" id="vWi-d7-wec"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="6sd-3s-ung"/>
+                    <connections>
+                        <outlet property="budgetView" destination="fe5-YO-Xlx" id="eTA-Yr-KCi"/>
+                        <outlet property="noSpendingLabel" destination="RUB-tY-mot" id="0uV-pF-yPJ"/>
+                        <outlet property="tableView" destination="SLu-NL-nQN" id="LZw-Gc-GiE"/>
+                        <outlet property="titleTextField" destination="J1v-z2-3cf" id="TsL-xr-hbq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jtR-fx-5Tr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="629" y="66"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HBv-t1-rfQ">
@@ -188,7 +371,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="7Lw-wN-VOs"/>
+                        <segue destination="rn5-OD-5Nm" kind="relationship" relationship="rootViewController" id="6uP-2Q-fbq"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iKS-F6-Mr0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -200,5 +383,8 @@
         <image name="ic_add" width="80" height="80"/>
         <image name="ic_settings" width="24" height="24"/>
         <image name="profile_picture" width="40" height="40"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
