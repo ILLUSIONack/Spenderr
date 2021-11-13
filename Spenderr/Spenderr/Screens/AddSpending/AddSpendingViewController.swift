@@ -13,6 +13,7 @@ class AddSpendingViewController: UIViewController {
     let expenseRepository: ExpenseRepository! = ServiceProvider.shared.expenseRepository
     let userRepository: UserRepository! = ServiceProvider.shared.userRepository
     
+    var viewControllerDelegate: ViewControllerDelegate?
     @IBOutlet weak var nameTextField: MDCFilledTextField!
     @IBOutlet weak var ammountTextField: MDCFilledTextField!
     @IBOutlet var backgroundView: UIView!
@@ -44,7 +45,9 @@ class AddSpendingViewController: UIViewController {
             }
             expenseRepository.addExpense(userPath: userPath, name: nameTextField.text!, ammount: Int(ammountTextField.text!)!) { (result) in
                 switch result {
-                case .success(_): self.navigationController?.dismiss(animated: true, completion: nil)
+                case .success(_):
+                    self.viewControllerDelegate?.scrollToTop()
+                    self.navigationController?.dismiss(animated: true, completion: nil)
                 case .failure(let error):  self.showAlertDialog(title: "Error", message: error.localizedDescription, alertActions: [UIAlertAction(title: "OK", style: .default)])
                 }
             }

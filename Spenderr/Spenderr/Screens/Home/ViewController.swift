@@ -8,8 +8,12 @@
 import UIKit
 import Firebase
 
-class ViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
-    
+protocol ViewControllerDelegate {
+    func scrollToTop()
+}
+
+class ViewController: UIViewController, UIAdaptivePresentationControllerDelegate, ViewControllerDelegate {
+
     let userRepository = ServiceProvider.shared.userRepository
     let expenseRepository = ServiceProvider.shared.expenseRepository
     
@@ -42,6 +46,11 @@ class ViewController: UIViewController, UIAdaptivePresentationControllerDelegate
             }
             self.titleTextField.text = name
         }
+    }
+    
+    func scrollToTop() {
+        let topRow = IndexPath(row: 0, section: 0)
+        self.tableView.scrollToRow(at: topRow, at: .top, animated: true)
     }
     
     private func setupUI() {
@@ -81,6 +90,8 @@ class ViewController: UIViewController, UIAdaptivePresentationControllerDelegate
     
     @IBAction func addButtonPressed(_ sender: Any) {
         let nvc = UIStoryboard(name: "AddSpending", bundle: nil).instantiateInitialViewController() as! UINavigationController
+        let vc = nvc.viewControllers[0] as! AddSpendingViewController
+        vc.viewControllerDelegate = self
         if #available(iOS 13.0, *) {
             nvc.modalPresentationStyle = .automatic
             nvc.presentationController?.delegate = self
