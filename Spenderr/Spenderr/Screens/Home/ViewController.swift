@@ -13,7 +13,7 @@ protocol ViewControllerDelegate {
 }
 
 class ViewController: UIViewController, UIAdaptivePresentationControllerDelegate, ViewControllerDelegate {
-
+    
     let userRepository = ServiceProvider.shared.userRepository
     let expenseRepository = ServiceProvider.shared.expenseRepository
     
@@ -22,6 +22,7 @@ class ViewController: UIViewController, UIAdaptivePresentationControllerDelegate
     @IBOutlet weak var budgetLabel: UILabel!
     @IBOutlet weak var noSpendingLabel: UILabel!
     @IBOutlet weak var titleTextField: UILabel!
+    
     var totalExpenses: Int {
         if let totalExpenses = self.expenseRepository?.totalExpenses {
             return totalExpenses
@@ -35,7 +36,7 @@ class ViewController: UIViewController, UIAdaptivePresentationControllerDelegate
         loadData()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView), name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reloadBudget), name: NSNotification.Name(rawValue: "reloadBudget"), object: nil)
-
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,8 +64,8 @@ class ViewController: UIViewController, UIAdaptivePresentationControllerDelegate
     }
     
     func scrollToTop() {
-//        let topRow = IndexPath(row: 0, section: 0)
-//        self.tableView.scrollToRow(at: topRow, at: .top, animated: true)        
+        //        let topRow = IndexPath(row: 0, section: 0)
+        //        self.tableView.scrollToRow(at: topRow, at: .top, animated: true)
         self.tableView.setContentOffset( CGPoint(x: 0, y: 0) , animated: true)
     }
     
@@ -139,6 +140,21 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate, UIScrollVi
         cell.nameLabel.text = (expenseRepository?.expenses[indexPath.row].data["name"] as! String)
         cell.priceLabel.text = "€ \((expenseRepository?.expenses[indexPath.row].data["ammount"] as! Int))"
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            if let expensePath = expenseRepository?.expenses[indexPath.row].path {
+                expenseRepository?.deleteExpense(expensePath: expensePath, onComplete: { errorMessage in
+                    if let errorMessage = errorMessage {
+                        print(errorMessage)
+                    }
+                })
+            }
+            
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+        }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

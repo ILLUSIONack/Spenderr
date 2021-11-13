@@ -54,4 +54,13 @@ class ExpenseRepository {
         }
         onComplete(OperationResult.success(true))
     }
+    
+    func deleteExpense(expensePath: String, onComplete: @escaping (String?) -> Void) {
+        firestoreService.deleteItem(path: expensePath) { error in
+            if let error = error {
+                _ = onComplete(error.localizedDescription)
+            }
+            _ = onComplete(nil)
+        }
+    }
 }

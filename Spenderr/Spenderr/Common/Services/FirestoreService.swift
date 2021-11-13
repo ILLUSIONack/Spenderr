@@ -81,6 +81,11 @@ class FirestoreService {
             let firestoreDocuments: [Expense] = documents.map({ Expense(document: FirestoreDocument(path: $0.reference.path, data: $0.data())) })
             _ = transform(firestoreDocuments)
         }
-        
+    }
+    
+    func deleteItem(path: String, onComplete: @escaping (Error?) -> Void) {        
+        db.document(path).delete { err in
+            _ = onComplete(err)
+        }
     }
 }
