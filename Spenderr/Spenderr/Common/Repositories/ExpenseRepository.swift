@@ -39,11 +39,9 @@ class ExpenseRepository {
         }
         firestoreService.observeCollection(path: "users/\(currentUserId)/expenses/") { (expenseList) in
             self.expenses = expenseList
-            var expensesTotal = 0
-            for expenses in expenseList {
-                expensesTotal = expensesTotal + (expenses.data["ammount"] as! Int)
+            self.totalExpenses = expenseList.map { expense in expense.data["ammount"] }.reduce(0) { partialResult, number in
+                partialResult + (number as! Int)
             }
-            self.totalExpenses = expensesTotal
         }
     }
     
