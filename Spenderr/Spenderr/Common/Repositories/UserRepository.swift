@@ -20,7 +20,7 @@ class UserRepository {
         return self.firebaseService.currentUserDisplayName
     }
     
-    var currentUser: User?
+    var currentUser: CollectionItem?
     
     init(firebaseService: FirebaseService) {
         self.firebaseService = firebaseService

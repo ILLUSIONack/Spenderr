@@ -50,7 +50,8 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
                                 print(state)
                             case .notFound(state: let state, _, _):
                                 print(state)
-                            case .success(_, _, _):
+                            case .success(_, let user, _):
+                                UserDefaults.standard.setValue(user.data["displayName"], forKey: "name")
                                 self.dismiss()
                             case .error(state: let state, _, _):
                                 print(state)

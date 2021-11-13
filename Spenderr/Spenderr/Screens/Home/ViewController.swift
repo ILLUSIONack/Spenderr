@@ -20,9 +20,7 @@ class ViewController: UIViewController, UIAdaptivePresentationControllerDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        DispatchQueue.main.async {
-            self.setupUI()
-        }
+        setupUI()
         loadData()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView), name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
     }
@@ -47,12 +45,22 @@ class ViewController: UIViewController, UIAdaptivePresentationControllerDelegate
     }
     
     private func setupUI() {
-        budgetView.layer.masksToBounds = true
-        budgetView.layer.cornerRadius = 9
-        noSpendingLabel.isHidden = true
-        tableView.isHidden = false
-        tableView.delegate = self
-        tableView.dataSource = self
+        DispatchQueue.main.async {
+            // Setup tableview and navigation background color and title
+            self.tableView.backgroundColor = .white
+            self.tableView.tableHeaderView?.backgroundColor = .white
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name:"Belfort",size: 20)!]
+            self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name:"Belfort", size: 40)!]
+            
+            self.budgetView.layer.masksToBounds = true
+            self.budgetView.layer.cornerRadius = 9
+            
+            self.noSpendingLabel.isHidden = true
+            
+            self.tableView.isHidden = false
+            self.tableView.delegate = self
+            self.tableView.dataSource = self
+        }
     }
     
     private func navigateToAuthentication() {
@@ -93,17 +101,11 @@ class ViewController: UIViewController, UIAdaptivePresentationControllerDelegate
     }
 }
 
-extension ViewController: UITableViewDataSource, UITableViewDelegate {
+extension ViewController: UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let expenses = expenseRepository?.expenses.count ?? 0
-        if expenses == 0 {
-            noSpendingLabel.isHidden = false
-            tableView.isHidden = true
-        } else {
-            noSpendingLabel.isHidden = true
-            tableView.isHidden = false
-        }
-        return expenses
+        noSpendingLabel.isHidden = expenses != 0
+        return expenses == 0 ? 0 : expenses
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -112,4 +114,18 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offset = scrollView.contentOffset.y / 150
+        print(budgetView.bounds.size.height)
+        print(offset)
+        if offset > 0.5 {
+            UIView.animate(withDuration: 0.2) {
+                self.navigationController?.navigationBar.topItem?.title = "150"
+                self.navigationController?.navigationBar.backgroundColor = .black
+            }
+        } else {
+            self.navigationController?.navigationBar.backgroundColor = .white
+            self.navigationController?.navigationBar.topItem?.title = "Balance"
+        }
+    }
 }
