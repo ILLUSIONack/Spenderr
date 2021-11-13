@@ -121,7 +121,8 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate, UIScrollVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ExpenseCell", for: indexPath) as! ExpenseCell
-        cell.nameLabel.text = expenseRepository?.expenses[indexPath.row]
+        cell.nameLabel.text = (expenseRepository?.expenses[indexPath.row].data["name"] as! String)
+        cell.priceLabel.text = "€ \((expenseRepository?.expenses[indexPath.row].data["ammount"] as! Int))"
         return cell
     }
     

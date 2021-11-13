@@ -15,7 +15,7 @@ class ExpenseRepository {
         return self.userRepository.currentUserId
     }
     
-    var expenses : [String] = [] {
+    var expenses : [Expense] = [] {
         didSet {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
         }
@@ -32,12 +32,7 @@ class ExpenseRepository {
             return
         }
         firestoreService.observeCollection(path: "users/\(currentUserId)/expenses/") { (expenseList) in
-            var expenses = [String]()
-
-            for expense in expenseList {
-                expenses.append(expense.data["name"] as! String)
-            }
-            self.expenses = expenses
+            self.expenses = expenseList
         }
     }
     
