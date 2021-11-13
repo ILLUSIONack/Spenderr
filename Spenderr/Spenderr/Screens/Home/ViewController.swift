@@ -19,14 +19,23 @@ class ViewController: UIViewController, UIAdaptivePresentationControllerDelegate
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var budgetView: UIView!
+    @IBOutlet weak var budgetLabel: UILabel!
     @IBOutlet weak var noSpendingLabel: UILabel!
     @IBOutlet weak var titleTextField: UILabel!
+    var totalExpenses: Int {
+        if let totalExpenses = self.expenseRepository?.totalExpenses {
+            return totalExpenses
+        }
+        return 0
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         loadData()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView), name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadBudget), name: NSNotification.Name(rawValue: "reloadBudget"), object: nil)
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,18 +48,24 @@ class ViewController: UIViewController, UIAdaptivePresentationControllerDelegate
         self.tableView.reloadData()
     }
     
+    @objc func reloadBudget(notification: NSNotification) {
+        self.budgetLabel.text = "€ \(totalExpenses)"
+    }
+    
     func loadData() {
         DispatchQueue.main.async {
             guard let name = UserDefaults.standard.object(forKey: "name") as? String else {
                 return self.navigateToAuthentication()
             }
             self.titleTextField.text = name
+            self.budgetLabel.text = "€ \(self.totalExpenses)"
         }
     }
     
     func scrollToTop() {
-        let topRow = IndexPath(row: 0, section: 0)
-        self.tableView.scrollToRow(at: topRow, at: .top, animated: true)
+//        let topRow = IndexPath(row: 0, section: 0)
+//        self.tableView.scrollToRow(at: topRow, at: .top, animated: true)        
+        self.tableView.setContentOffset( CGPoint(x: 0, y: 0) , animated: true)
     }
     
     private func setupUI() {
@@ -132,7 +147,8 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate, UIScrollVi
         print(offset)
         if offset > 0.5 {
             UIView.animate(withDuration: 0.2) {
-                self.navigationController?.navigationBar.topItem?.title = "150"
+                
+                self.navigationController?.navigationBar.topItem?.title = "\(self.totalExpenses)"
                 self.navigationController?.navigationBar.backgroundColor = .black
             }
         } else {

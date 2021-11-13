@@ -346,6 +346,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="budgetLabel" destination="kbU-oU-D0g" id="m72-LV-uav"/>
                         <outlet property="budgetView" destination="fe5-YO-Xlx" id="eTA-Yr-KCi"/>
                         <outlet property="noSpendingLabel" destination="RUB-tY-mot" id="0uV-pF-yPJ"/>
                         <outlet property="tableView" destination="SLu-NL-nQN" id="LZw-Gc-GiE"/>

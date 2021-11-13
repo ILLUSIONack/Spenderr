@@ -15,9 +15,15 @@ class ExpenseRepository {
         return self.userRepository.currentUserId
     }
     
-    var expenses : [Expense] = [] {
+    var expenses: [Expense] = [] {
         didSet {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadTableView"), object: nil)
+        }
+    }
+    
+    var totalExpenses: Int = 0 {
+        didSet {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadBudget"), object: nil)
         }
     }
     
@@ -33,6 +39,11 @@ class ExpenseRepository {
         }
         firestoreService.observeCollection(path: "users/\(currentUserId)/expenses/") { (expenseList) in
             self.expenses = expenseList
+            var expensesTotal = 0
+            for expenses in expenseList {
+                expensesTotal = expensesTotal + (expenses.data["ammount"] as! Int)
+            }
+            self.totalExpenses = expensesTotal
         }
     }
     
