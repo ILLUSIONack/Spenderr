@@ -278,25 +278,37 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tyN-aQ-T4o">
-                                                    <rect key="frame" x="72" y="27.5" width="314" height="25"/>
+                                                    <rect key="frame" x="72" y="27.5" width="263" height="25"/>
+                                                    <fontDescription key="fontDescription" name="BelfortLight" family="Belfort" pointSize="22"/>
+                                                    <color key="textColor" red="0.14901960780000001" green="0.1960784314" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="22m-Ye-ulC" userLabel="Price Label">
+                                                    <rect key="frame" x="343" y="27.5" width="43" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="43" id="weE-c7-hHA"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="BelfortLight" family="Belfort" pointSize="22"/>
                                                     <color key="textColor" red="0.14901960780000001" green="0.1960784314" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="22m-Ye-ulC" secondAttribute="trailing" constant="8" id="5T3-Hi-jdo"/>
                                                 <constraint firstItem="tyN-aQ-T4o" firstAttribute="centerY" secondItem="iVO-Yz-rtL" secondAttribute="centerY" id="MNO-gt-jt8"/>
+                                                <constraint firstItem="22m-Ye-ulC" firstAttribute="leading" secondItem="tyN-aQ-T4o" secondAttribute="trailing" constant="8" id="e7w-Ae-jQE"/>
                                                 <constraint firstItem="iVO-Yz-rtL" firstAttribute="leading" secondItem="wJx-tb-veo" secondAttribute="leading" constant="16" id="lht-ZV-md9"/>
                                                 <constraint firstItem="tyN-aQ-T4o" firstAttribute="leading" secondItem="iVO-Yz-rtL" secondAttribute="trailing" constant="8" id="ozS-51-iHm"/>
                                                 <constraint firstAttribute="bottom" secondItem="iVO-Yz-rtL" secondAttribute="bottom" constant="16" id="qus-Fx-WCp"/>
                                                 <constraint firstItem="iVO-Yz-rtL" firstAttribute="top" secondItem="wJx-tb-veo" secondAttribute="top" constant="16" id="rLe-DE-3Bt"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="tyN-aQ-T4o" secondAttribute="trailing" constant="8" id="rTa-lF-2T0"/>
+                                                <constraint firstItem="22m-Ye-ulC" firstAttribute="centerY" secondItem="tyN-aQ-T4o" secondAttribute="centerY" id="tjy-PI-Si0"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="iconView" destination="iVO-Yz-rtL" id="Z6v-Cj-vmM"/>
                                             <outlet property="nameLabel" destination="tyN-aQ-T4o" id="UDk-Jr-2T2"/>
+                                            <outlet property="priceLabel" destination="22m-Ye-ulC" id="4jk-Wa-Ej8"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -342,7 +354,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jtR-fx-5Tr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="629" y="66"/>
+            <point key="canvasLocation" x="628.98550724637687" y="65.625"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HBv-t1-rfQ">
