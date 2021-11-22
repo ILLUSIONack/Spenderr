@@ -40,6 +40,8 @@
 		40EE7973264A0D67008F79D3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EE7972264A0D67008F79D3 /* User.swift */; };
 		40EE7975264A0FDA008F79D3 /* CollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40EE7974264A0FDA008F79D3 /* CollectionItem.swift */; };
 		B2935091C2197A9F7A1B6ADD /* Pods_SpenderrTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF37EEBFB130E50DC54ED67C /* Pods_SpenderrTests.framework */; };
+		C52AB13C274C2D43004DDC81 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C52AB13B274C2D43004DDC81 /* Profile.storyboard */; };
+		C52AB13E274C2D89004DDC81 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52AB13D274C2D89004DDC81 /* ProfileViewController.swift */; };
 		C5AE2A582703CE3200A2923C /* AddSpendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AE2A572703CE3200A2923C /* AddSpendingViewController.swift */; };
 		C5AE2A5A2703CE3E00A2923C /* AddSpending.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5AE2A592703CE3E00A2923C /* AddSpending.storyboard */; };
 		F2859BB43F393AF7B05F7848 /* Pods_Spenderr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B2E8B0D43713E1ABDFA9EC /* Pods_Spenderr.framework */; };
@@ -111,6 +113,8 @@
 		A82D7DC75158130E0412D580 /* Pods-Spenderr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spenderr.debug.xcconfig"; path = "Target Support Files/Pods-Spenderr/Pods-Spenderr.debug.xcconfig"; sourceTree = "<group>"; };
 		AF37EEBFB130E50DC54ED67C /* Pods_SpenderrTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpenderrTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C07B1376A9CCCADAE57F787E /* Pods-Spenderr-SpenderrUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spenderr-SpenderrUITests.debug.xcconfig"; path = "Target Support Files/Pods-Spenderr-SpenderrUITests/Pods-Spenderr-SpenderrUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C52AB13B274C2D43004DDC81 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		C52AB13D274C2D89004DDC81 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C5AE2A572703CE3200A2923C /* AddSpendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSpendingViewController.swift; sourceTree = "<group>"; };
 		C5AE2A592703CE3E00A2923C /* AddSpending.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddSpending.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -306,6 +310,7 @@
 		40EE7961264A0203008F79D3 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				C52AB13A274C2D20004DDC81 /* Profile */,
 				C5AE2A562703CDFE00A2923C /* AddSpending */,
 				408C8DB9264CCD1A00B21816 /* CreateAccount */,
 				40EE7962264A0203008F79D3 /* Home */,
@@ -363,6 +368,15 @@
 				4080F180270518A300B69983 /* Expense.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		C52AB13A274C2D20004DDC81 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				C52AB13B274C2D43004DDC81 /* Profile.storyboard */,
+				C52AB13D274C2D89004DDC81 /* ProfileViewController.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		C5AE2A562703CDFE00A2923C /* AddSpending */ = {
@@ -483,6 +497,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				40EE79392649FC59008F79D3 /* LaunchScreen.storyboard in Resources */,
+				C52AB13C274C2D43004DDC81 /* Profile.storyboard in Resources */,
 				40EE7967264A0203008F79D3 /* Main.storyboard in Resources */,
 				408C8DC0264CCD5100B21816 /* Login.storyboard in Resources */,
 				408C8DCF264E5A9C00B21816 /* Settings.storyboard in Resources */,
@@ -634,6 +649,7 @@
 				408C8DD6264E8E1900B21816 /* UserRepository.swift in Sources */,
 				4080F1792705139C00B69983 /* ExpenseCell.swift in Sources */,
 				408C8DBD264CCD3600B21816 /* CreateAccountViewController.swift in Sources */,
+				C52AB13E274C2D89004DDC81 /* ProfileViewController.swift in Sources */,
 				40EE796E264A07F9008F79D3 /* FirestoreService.swift in Sources */,
 				408C8DC7264CCE2B00B21816 /* OnboardingViewController.swift in Sources */,
 				408C8DD1264E5AA600B21816 /* SettingsViewController.swift in Sources */,

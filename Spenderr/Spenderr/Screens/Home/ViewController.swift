@@ -21,15 +21,14 @@ class ViewController: UIViewController, UIAdaptivePresentationControllerDelegate
     @IBOutlet weak var budgetView: UIView!
     @IBOutlet weak var budgetLabel: UILabel!
     @IBOutlet weak var noSpendingLabel: UILabel!
-    @IBOutlet weak var titleTextField: UILabel!
-    
+
     var totalExpenses: Int {
         if let totalExpenses = self.expenseRepository?.totalExpenses {
             return totalExpenses
         }
         return 0
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -55,10 +54,9 @@ class ViewController: UIViewController, UIAdaptivePresentationControllerDelegate
     
     func loadData() {
         DispatchQueue.main.async {
-            guard let name = UserDefaults.standard.object(forKey: "name") as? String else {
+            guard (UserDefaults.standard.object(forKey: "name") as? String) != nil else {
                 return self.navigateToAuthentication()
             }
-            self.titleTextField.text = name
             self.budgetLabel.text = "€ \(self.totalExpenses)"
         }
     }
@@ -164,7 +162,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate, UIScrollVi
         if offset > 0.5 {
             UIView.animate(withDuration: 0.2) {
                 
-                self.navigationController?.navigationBar.topItem?.title = "\(self.totalExpenses)"
+                self.navigationController?.navigationBar.topItem?.title = "€ \(self.totalExpenses)"
                 self.navigationController?.navigationBar.backgroundColor = .black
             }
         } else {
