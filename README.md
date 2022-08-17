@@ -10,6 +10,7 @@ The Spenderr iOS mobile application currently lets you add your daily spendings 
 - Sign out 
 - Implement calculation based on spendings added
 - Add Bitrise
+- Trigger added to Bitrise for push to main
 
 
 ## To be added Features
