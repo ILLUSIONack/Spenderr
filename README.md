@@ -9,6 +9,7 @@ The Spenderr iOS mobile application currently lets you add your daily spendings 
 - Add daily spendings with given `name` and ammount in `euros`
 - Sign out 
 - Implement calculation based on spendings added
+- Add Bitrise
 
 
 ## To be added Features
